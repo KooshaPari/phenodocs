@@ -1,11 +1,21 @@
 import { defineConfig } from 'vitepress'
 
+// Environment-based configuration for GitHub Pages compatibility
+const isPagesBuild = process.env.GITHUB_ACTIONS === 'true' || process.env.GITHUB_PAGES === 'true'
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'phenodocs'
+const docsBase = isPagesBuild ? `/${repoName}/` : '/'
+
 export default defineConfig({
   title: 'PhenoDocs',
   description: 'Federation hub for multi-project documentation',
   lang: 'en-US',
+  base: docsBase,
   lastUpdated: true,
   cleanUrls: true,
+
+  head: [
+    ['link', { rel: 'icon', href: `${docsBase}favicon.ico` }],
+  ],
 
   themeConfig: {
     logo: '/logo.svg',
@@ -47,7 +57,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/yourorg/phenodocs' }
+      { icon: 'github', link: `https://github.com/KooshaPari/${repoName}` }
     ],
 
     footer: {
@@ -60,9 +70,17 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/yourorg/phenodocs/edit/main/docs/:path',
+      pattern: `https://github.com/KooshaPari/${repoName}/edit/main/docs/:path`,
       text: 'Edit this page on GitHub'
-    }
+    },
+
+    outline: {
+      level: [2, 3],
+      label: 'On this page'
+    },
+
+    externalLinkIcon: true,
+    breadcrumb: true
   },
 
   markdown: {
@@ -70,6 +88,7 @@ export default defineConfig({
     theme: {
       light: 'github-light',
       dark: 'github-dark'
-    }
+    },
+    anchorLinks: true
   }
 })
