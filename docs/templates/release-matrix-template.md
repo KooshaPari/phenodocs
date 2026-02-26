@@ -7,6 +7,7 @@ Channel: alpha|beta|rc|canary|release
 | Task ID | Parent ID | PR Name | State | Depends On | Risks | Gate Result | Owner | Rollback | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 <<<<<<< HEAD
+<<<<<<< HEAD
 | 1 | - | feat/...-alpha-core | alpha | - | low | pass | `owner` | none | foundation |
 | 1.1 | 1 | feat/...-beta-cache | beta | 1 | med | pass | `owner` | `git revert <sha>` | perf cache |
 | 1.2 | 1 | feat/...-rc-renderer | rc | 1 | high | pass | `owner` | revert to legacy renderer | gated rollout |
@@ -15,3 +16,8 @@ Channel: alpha|beta|rc|canary|release
 | 1.1 | 1 | feat/...-beta-cache | beta | 1 | med | pass | <owner> | git revert <sha> | perf cache |
 | 1.2 | 1 | feat/...-rc-renderer | rc | 1 | high | pass | <owner> | revert to legacy renderer | gated rollout |
 >>>>>>> 53244ab (docs: address review comments for stacked PR handbook)
+=======
+| 1 | - | feat/...-alpha-core | alpha | - | low | pass | `owner` | none | foundation |
+| 1.1 | 1 | feat/...-beta-cache | beta | 1 | med | pass | `owner` | git revert `sha` | perf cache |
+| 1.2 | 1 | feat/...-rc-renderer | rc | 1 | high | pass | `owner` | revert to legacy renderer | gated rollout |
+>>>>>>> 44c6b82 (docs: stabilize PR docs build for CI gates)
