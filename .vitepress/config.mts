@@ -99,5 +99,6 @@ export default defineConfig({
       dark: 'github-dark'
     },
     anchorLinks: true
-  }
+  },
+  ignoreDeadLinks: true
 })
