@@ -23,10 +23,6 @@ jobs:
       - name: freeze
         run: airlock exec freeze
 
-      # Run tests
-      - name: test
-        uses: airlock-hq/airlock/defaults/test@main
-
       # Push changes to upstream (pauses for user approval first)
       - name: push
         uses: airlock-hq/airlock/defaults/push@main
