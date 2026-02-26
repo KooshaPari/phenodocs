@@ -11,5 +11,5 @@ PR description should include these fields:
 - API-Shape-Impact: none | additive | breaking
 - Validation: lint, test, migration check with command list
 
-If API-shape-impact is `breaking`:
+If API-Shape-Impact is `breaking`:
 - child PRs that compile against this API cannot merge first.
