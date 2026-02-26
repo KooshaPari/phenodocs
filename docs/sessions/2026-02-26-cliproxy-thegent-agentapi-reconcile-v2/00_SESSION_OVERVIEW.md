@@ -143,3 +143,46 @@ Notes:
 ### Hard guardrails
 - Do not force-delete or hard-rewrite `main` in any canonical repo.
 - Avoid `git reset`/`git checkout` away from branch context for local canonicals except explicit requested merges.
+
+## Live Local Snapshot (post-checkpoint, 2026-02-26)
+
+### Canonical branch positions (verified)
+
+- `cliproxyapi++`: `main` on `upstream/main`, `1` ahead.
+- `cliproxyapi-plusplus`: `main` on `origin/chore/fix-gh-pages-workflow-gates`, `2` ahead.
+- `thegent`: `main` on `upstream/main`, `4` ahead, local edits present.
+- `agentapi-plusplus`: `main` on `upstream/main`, `1` ahead `74` behind.
+
+### Non-merged branch pressure (local, `git branch --no-merged main`)
+
+- `cliproxyapi++`: `64` branches
+- `cliproxyapi-plusplus`: `207` branches
+- `thegent`: `8` branches
+- `agentapi-plusplus`: `3` branches
+
+### Current priority queue (local-only planning, GH auth still invalid)
+
+1. **Fix shared CI check-name / lint-gate template drift first** (historically blocked across `cliproxy*` and `thegent` batches).
+2. **Resolve review-comment debt** where bot/PR review comments are still blocking mergeability.
+3. **Run PR check refresh once `gh` auth is restored**, then map each local branch to PR heads before deleting.
+4. **Close stale locals only after upstream confirmation** for:
+   - stale PR branch deletion
+   - stale migration/capture branches that never had open PRs
+
+### Commands to run after auth recovery
+
+```
+gh auth login
+for repo in cliproxyapi++ cliproxyapi-plusplus thegent agentapi-plusplus; do
+  gh pr list --repo KooshaPari/$repo --state open --json number,headRefName,mergeStateStatus,reviewDecision,isDraft,updatedAt
+done
+```
+
+For known comment debt on `agentapi-plusplus` and `thegent`:
+
+```
+for n in 263 262 260 259 258 257 256 255 254; do
+  gh pr comment KooshaPari/agentapi-plusplus $n --body "@coderabbitai full review" || true
+done
+gh pr comment KooshaPari/thegent 494 --body "@coderabbitai full review" || true
+```
