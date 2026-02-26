@@ -89,3 +89,27 @@ Notes:
 - `for n in $(gh pr list --repo KooshaPari/cliproxyapi-plusplus --state open --json number --jq '.[].number' --limit 60); do gh pr checks $n --repo KooshaPari/cliproxyapi-plusplus --json name,state; done` (chunked)
 - `gh pr checks <PR> --repo KooshaPari/agentapi-plusplus --json name,state`
 - `gh pr checks <PR> --repo KooshaPari/thegent --json name,state`
+
+
+## Offline Reconcile Addendum (2026-02-26)
+
+- `gh auth` is currently invalid in this environment; live PR check/query commands are blocked.
+- `cliproxyapi++` canonical branch has been switched back to `main` and left there for safe staging.
+- Local branch inventory snapshot:
+  - `cliproxyapi++`: 6 merged-local, 64 non-merged locals
+  - `cliproxyapi-plusplus`: 4 merged-local, 207 non-merged locals
+  - `thegent`: 3 merged-local, 7 non-merged locals
+  - `agentapi-plusplus`: 2 merged-local, 3 non-merged locals
+- Highest-priority cleanup strategy:
+  1) Re-auth GH and refresh authoritative PR/CI states
+  2) Fix shared CI blockers in wave order (`CodeRabbit`, analyze/build/docs/check-name gating)
+  3) Resolve review-thread debt after core checks are stable
+  4) Prune stale non-merged locals confirmed closed upstream
+
+## Immediate Next Commands (run after `gh auth login`)
+
+- `gh auth status`
+- `for n in ...; do gh pr list -R KooshaPari/cliproxyapi-plusplus --state open; done`
+- `gh pr checks <n> -R KooshaPari/cliproxyapi-plusplus --json name,state`
+- `gh pr view <n> -R KooshaPari/cliproxyapi-plusplus --json reviewDecision,mergeStateStatus,comments,reviews`
+- Repeat for `thegent` and `agentapi-plusplus` once online tokens are valid
