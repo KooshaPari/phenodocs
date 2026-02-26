@@ -6,7 +6,7 @@ A: playback core (alpha)
   ├─ B: cache layer (beta)
   └─ C: advanced renderer (beta/rc)
 
-C is same feature family only if B depends on A.
+C is in the same feature family only if C depends on A (directly or transitively).
 If C is renderer risk, it must stay at beta/rc even if A is on main.
 
 ## Rule of merge order

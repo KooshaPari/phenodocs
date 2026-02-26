@@ -13,6 +13,8 @@ Standards and processes for maintaining PhenoDocs.
 
 ## Review Workflow
 
+All reviewable changes follow this fixed sequence:
+
 ```
 Draft → Auto-Validation → Review → Approval → Publish
   │             │              │        │         │

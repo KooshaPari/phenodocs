@@ -7,7 +7,7 @@ Use this module for all roadmap, feature, and review planning.
 - [03 PR Template](./03-pr-template.md)
 - [04 Merge Scenarios](./04-merge-scenarios.md)
 - [05 PR Reconciliation](./05-pr-reconciliation.md)
-- [06 Release Matrix Template](../templates/release-matrix-template.md)
+- [06 Release Matrix Template](../../templates/release-matrix-template.md)
 
 General rules:
 - Keep canonical folders on `main`.
