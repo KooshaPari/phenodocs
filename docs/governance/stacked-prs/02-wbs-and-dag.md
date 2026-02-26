@@ -10,7 +10,11 @@ Use `X.X.X.X` hierarchy with explicit state and dependency.
 Template fields:
 - task_id
 - title
+<<<<<<< HEAD
 - state: alpha|beta|canary|rc|release
+=======
+- state: canary|alpha|beta|rc|release
+>>>>>>> 53244ab (docs: address review comments for stacked PR handbook)
 - depends_on
 - parent_task
 - pr_name
