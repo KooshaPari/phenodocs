@@ -186,3 +186,21 @@ for n in 263 262 260 259 258 257 256 255 254; do
 done
 gh pr comment KooshaPari/thegent 494 --body "@coderabbitai full review" || true
 ```
+
+## Recheck (2026-02-26, after latest run)
+
+- `gh auth status` is still invalid for `KooshaPari` and `Dmouse92`; no live PR operations possible.
+- `cliproxyapi++`: `main` clean of branch changes, still `64` non-merged, plus untracked `.airlock`.
+- `cliproxyapi-plusplus`: `main` plus untracked `cli-proxy-api-plus` and `server` binaries and `.airlock`.
+- `thegent`: on `main`, still with in-repo doc edits from prior governance work; `8` non-merged.
+- `agentapi-plusplus`: on `main`, `3` non-merged, plus untracked `.airlock`.
+
+### Immediate offline-safe next step set
+
+1. Consolidate all `.airlock`, `cli-proxy-api-plus`, `server` artifacts via repo-specific `.gitignore` rules in each canonical repo before any future pushes.
+2. Keep canonical branches on `main`.
+3. After auth restoration, execute PR sync:
+   - `gh pr list --state open` for each repo,
+   - `gh pr checks` for current failures,
+   - `@coderabbitai full review` on CodeRabbit-blocked PRs,
+   - close-only branches confirmed upstream-closed.
