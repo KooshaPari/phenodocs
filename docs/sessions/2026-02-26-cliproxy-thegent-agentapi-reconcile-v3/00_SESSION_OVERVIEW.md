@@ -32,8 +32,13 @@
 4. Resolve review-thread debt in stack order, then merge by dependency chain.
 5. Keep canonical `main` branches untouched until explicit upstream pull/merge step.
 
+## Executed Sweep
+
+- `cliproxyapi-plusplus`: posted `@coderabbitai full review` to 86 `CodeRabbit`-failing PRs from the latest local snapshot.
+- `thegent`: posted `@coderabbitai full review` to 2 `CodeRabbit`-failing PRs (#494, #478).
+- Snapshot-driven run was intentionally used while API pagination intermittently returned 502 for fresh listing.
+
 ## Canonical Docs
 
 - Added module: [`docs/governance/stacked-prs/05-pr-reconciliation.md`](../governance/stacked-prs/05-pr-reconciliation.md)
 - Updated index: [`docs/governance/stacked-prs/README.md`](../governance/stacked-prs/README.md)
-
