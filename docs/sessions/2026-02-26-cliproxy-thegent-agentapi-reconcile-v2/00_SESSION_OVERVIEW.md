@@ -204,3 +204,68 @@ gh pr comment KooshaPari/thegent 494 --body "@coderabbitai full review" || true
    - `gh pr checks` for current failures,
    - `@coderabbitai full review` on CodeRabbit-blocked PRs,
    - close-only branches confirmed upstream-closed.
+
+## Repo Branch Closure Matrix (local audit, deterministic)
+
+### 1) cliproxyapi++
+- total non-merged: 64
+- candidate cleanup classes:
+  - `tmp-`: 1 (`tmp-sign-test`, plus any other temp prefixed)
+  - `ci/`: 23
+  - `migrated/`: 27
+  - `feat/`: 7
+  - `chore/`: 1
+  - `garden/`: 3
+- first-pass local-prune candidates (only after upstream confirmation):
+  - `tmp-*`
+  - likely duplicated `main-restore` snapshots and `a`
+  - stale `ci/*`/`migrated/*` that are fully represented as completed PR stacks
+
+### 2) cliproxyapi-plusplus
+- total non-merged: 207
+- candidate cleanup classes:
+  - `tmp-`: 13
+  - `ci-fix`: 13
+  - `ci/`: 22
+  - `migrated/`: 13
+  - `feature/`: 17
+  - `feat/`: 5
+  - `chore/`: 5
+  - `replay/`: 39
+  - `reintegrate/`: 6
+  - `fix/`: 2
+  - `garden/`: 1
+- first-pass local-prune candidates:
+  - `tmp-*`
+  - `ci-fix-tmp-*`
+  - `replay/*` and `reintegrate/*` after PR mapping check
+
+### 3) thegent
+- total non-merged: 8
+- candidate cleanup classes:
+  - `fix/`: 4
+  - `garden/`: 3
+- focus sequence:
+  1. `fix/remove-broken-dag-files`
+  2. `fix/cli-test-fixes`
+  3. `fix/flash-agent-graceful-fallback`
+  4. `fix/cliproxyctl-empty-response-error`
+  5. `no-litellm`
+  6. remaining garden branches
+
+### 4) agentapi-plusplus
+- total non-merged: 3
+- candidate cleanup classes:
+  - `garden/`: 1 (`garden/release-framework`)
+  - `stack/`: 2
+- focus sequence:
+  1. stack branches
+  2. garden/release-framework
+
+### Live execution workflow (when `gh` auth is valid)
+- `gh pr list -R KooshaPari/<repo> --state open --json number,headRefName,mergeStateStatus,reviewDecision,isDraft,updatedAt`
+- map each `headRefName` to local non-merged branches
+- remove branch only if one of:
+  - PR closed/merged
+  - branch appears to be temp/replay/capture and no longer mapped to open PR
+- use `git branch -D <branch>` only after mapping and only within `...-wtrees/*` scoped local sets
