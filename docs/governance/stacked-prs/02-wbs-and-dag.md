@@ -10,7 +10,7 @@ Use `X.X.X.X` hierarchy with explicit state and dependency.
 Template fields:
 - task_id
 - title
-- state: alpha|beta|rc|release
+- state: canary|alpha|beta|rc|release
 - depends_on
 - parent_task
 - pr_name

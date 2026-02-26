@@ -3,9 +3,9 @@
 PR description should include these fields:
 
 - Depends-on: <PR-1-id | none>
-- Stack-Layer: L1 | L2 | L3
+- Stack-Layer: L1 | L2 | L3 | L4 (maps to capabilities, work packages, tasks, deliverables)
 - Release-Channel: alpha | beta | rc | canary | release
-- State: same as release channel
+- State: if different from release channel, explicitly explain variance.
 - Rollback-Plan: <command or rollback branch>
 - Compatibility: BREAKING | NON_BREAKING
 - API-Shape-Impact: none | additive | breaking

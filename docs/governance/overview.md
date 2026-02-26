@@ -13,16 +13,6 @@ Standards and processes for maintaining PhenoDocs.
 
 ## Review Workflow
 
-## Stacked PR and Release Ops Governance
-
-- [Stacked PR and Release Governance](/governance/stacked-prs/)
-- [Branching and Release Channels](/governance/stacked-prs/01-branching-and-channels)
-- [WBS and DAG Rules](/governance/stacked-prs/02-wbs-and-dag)
-- [PR Stack Template](/governance/stacked-prs/03-pr-template)
-- [Merge Scenarios](/governance/stacked-prs/04-merge-scenarios)
-- [Release Matrix Template](/templates/release-matrix-template)
-
-
 ```
 Draft → Auto-Validation → Review → Approval → Publish
   │             │              │        │         │
@@ -32,6 +22,15 @@ Draft → Auto-Validation → Review → Approval → Publish
   │             └─ Link check, build check
   └─ Initial creation
 ```
+
+### Stacked PR and Release Ops Governance
+
+- [Stacked PR and Release Governance](/governance/stacked-prs/)
+- [Branching and Release Channels](/governance/stacked-prs/01-branching-and-channels)
+- [WBS and DAG Rules](/governance/stacked-prs/02-wbs-and-dag)
+- [PR Stack Template](/governance/stacked-prs/03-pr-template)
+- [Merge Scenarios](/governance/stacked-prs/04-merge-scenarios)
+- [Release Matrix Template](/templates/release-matrix-template)
 
 ## Roles
 
