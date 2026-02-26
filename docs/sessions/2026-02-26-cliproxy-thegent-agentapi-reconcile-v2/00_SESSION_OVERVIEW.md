@@ -113,3 +113,33 @@ Notes:
 - `gh pr checks <n> -R KooshaPari/cliproxyapi-plusplus --json name,state`
 - `gh pr view <n> -R KooshaPari/cliproxyapi-plusplus --json reviewDecision,mergeStateStatus,comments,reviews`
 - Repeat for `thegent` and `agentapi-plusplus` once online tokens are valid
+
+## Execution Queue (Generated Locally, No GH Access)
+
+### Wave A: branch baseline normalization (safe, local-only)
+1) `cliproxyapi++`: stay on `main`
+2) `cliproxyapi-plusplus`: keep `main`; defer pushing to upstream until auth restored
+3) `thegent`: keep `main`
+4) `agentapi-plusplus`: keep `main`
+
+### Wave B: local branch backlog (high signal)
+- `cliproxyapi-plusplus` local backlog count: 207 (`archive/*`, `ci/*`, `ci-fix/*`, `migrated/*`, many `tmp-*`)
+- `cliproxyapi++` local backlog count: 64 (`ci/*`, `feat/*`, `migrated/*`, and `main-restore`)
+- `thegent` local backlog count: 7
+- `agentapi-plusplus` local backlog count: 3
+
+### Suggested local cleanup command set (run only after GH validation)
+- `gh pr list --repo KooshaPari/cliproxyapi-plusplus --state all --limit 500` and compare PR/head mapping
+- `for b in $(git -C /Users/kooshapari/CodeProjects/Phenotype/repos/cliproxyapi-plusplus branch | sed 's/^* //'); do`\n  `printf "%s\n" "$b"; done` -> map to PR heads
+- stale-close sweep command pattern:
+  - `git branch -D <branch>` for local branches confirmed closed/upstream merged
+- keep worktree branches in `*-wtrees/*` untouched
+
+### Review/CI debt priority (when GH is available)
+1. `thegent`: unblock PR #478 first, then #480, #482, then PRs #494/#493/#493-like mergeability noise
+2. `agentapi-plusplus`: fix check-blocked PRs first (`#263`,`#262`,`#260`...), then conflict-heavy (`#261,#260,#259...`)
+3. `cliproxyapi-plusplus`: stabilize check-name drift + analyze/build, then lane replay from lowest PR first (`492..616` as archived ordering snapshot)
+
+### Hard guardrails
+- Do not force-delete or hard-rewrite `main` in any canonical repo.
+- Avoid `git reset`/`git checkout` away from branch context for local canonicals except explicit requested merges.
