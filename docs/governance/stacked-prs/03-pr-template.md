@@ -1,0 +1,15 @@
+# PR Stack Template
+
+PR description should include these fields:
+
+- Depends-on: <PR-1-id | none>
+- Stack-Layer: L1 | L2 | L3
+- Release-Channel: alpha | beta | rc | canary | release
+- State: same as release channel
+- Rollback-Plan: <command or rollback branch>
+- Compatibility: BREAKING | NON_BREAKING
+- API-Shape-Impact: none | additive | breaking
+- Validation: lint, test, migration check with command list
+
+If API-shape-impact is `breaking`:
+- child PRs that compile against this API cannot merge first.

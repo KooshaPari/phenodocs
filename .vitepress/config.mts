@@ -50,7 +50,16 @@ export default defineConfig({
         {
           text: 'Governance',
           items: [
-            { text: 'Overview', link: '/governance/overview' }
+            { text: 'Overview', link: '/governance/overview' },
+            { text: 'Stacked PRs', link: '/governance/stacked-prs/' }
+          ]
+        }
+      ],
+      '/templates/': [
+        {
+          text: 'Templates',
+          items: [
+            { text: 'Release Matrix Template', link: '/templates/release-matrix-template' }
           ]
         }
       ]
