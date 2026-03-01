@@ -1,48 +1,42 @@
-/* PhenoDocs Custom Styles */
+/* PhenoDocs — imports the shared Keycap Palette */
+@import './keycap-palette.css';
 
-:root {
-  --vp-c-brand: #646cff;
-  --vp-c-brand-light: #747bff;
-  --vp-c-brand-dark: #535bf2;
-}
+/* ── PhenoDocs-specific overrides ── */
 
-/* Layer badges */
-.layer-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.layer-0 { background: #ffe0e0; color: #c00; }
-.layer-1 { background: #fff3e0; color: #e65100; }
-.layer-2 { background: #fff8e1; color: #f57f17; }
-.layer-3 { background: #e8f5e9; color: #2e7d32; }
-.layer-4 { background: #e3f2fd; color: #1565c0; }
-
-/* Doc type cards */
+/* Doc type cards (PhenoDocs hub only) */
 .doc-type-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
   margin: 24px 0;
 }
 
 .doc-type-card {
   padding: 16px;
+  background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  transition: all 0.2s;
+  transition: border-color 0.2s, transform 0.2s;
 }
 
 .doc-type-card:hover {
-  border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
+  border-color: var(--kc-accent);
+  transform: translateY(-1px);
 }
 
-/* Status badges */
-.status-draft { background: #f5f5f5; color: #666; }
-.status-active { background: #e3f2fd; color: #1565c0; }
-.status-published { background: #e8f5e9; color: #2e7d32; }
-.status-archived { background: #ffebee; color: #c62828; }
+:root .doc-type-card:hover {
+  border-color: var(--kc-accent-contrast);
+}
+
+.doc-type-card .card-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  margin-bottom: 4px;
+}
+
+.doc-type-card .card-desc {
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+  line-height: 1.5;
+}
