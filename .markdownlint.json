@@ -1,0 +1,11 @@
+{
+  "MD033": {
+    "allowed_elements": [
+      "CategorySwitcher",
+      "script"
+    ]
+  },
+  "MD060": false,
+  "MD004": false,
+  "MD040": false
+}

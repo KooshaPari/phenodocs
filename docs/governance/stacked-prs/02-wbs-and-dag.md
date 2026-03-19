@@ -8,6 +8,7 @@ Use `X.X.X.X` hierarchy with explicit state and dependency.
 - Level 4: Deliverables
 
 Template fields:
+
 - task_id
 - title
 - state: alpha|beta|canary|rc|release
@@ -16,6 +17,7 @@ Template fields:
 - pr_name
 
 Example:
+
 - A (alpha): playback engine foundation
 - B (beta): offline cache for playback (`depends_on: A`)
 - C (rc): web player renderer (`depends_on: A`, stricter channel)
