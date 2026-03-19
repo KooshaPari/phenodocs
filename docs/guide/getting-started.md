@@ -39,7 +39,7 @@ Visit `http://localhost:5173` to see your docs hub.
 
 Ensure your project documentation follows the doc taxonomy:
 
-```
+```bash
 your-project/
 ├── docs/
 │   ├── ideas/           # Layer 1
@@ -53,11 +53,13 @@ your-project/
 ### Step 2: Link Your Project
 
 Option A: Git Submodule
+
 ```bash
 git submodule add https://github.com/yourorg/your-project-docs.git projects/your-project
 ```
 
 Option B: Update HubGenerator
+
 ```python
 from docs_engine.hub.generator import HubGenerator
 
@@ -75,6 +77,7 @@ docs hub --hub-dir .
 ## Understanding the Views
 
 ### /lab/ — Working Documents
+
 - IdeaNotes
 - Research documents
 - Debug logs
@@ -83,6 +86,7 @@ docs hub --hub-dir .
 Use this view for active experimentation and ideation.
 
 ### /docs/ — Formal Specifications
+
 - Product Requirements (PRDs)
 - Architecture Decision Records (ADRs)
 - Functional Requirements
@@ -91,6 +95,7 @@ Use this view for active experimentation and ideation.
 This is your source of truth for specifications.
 
 ### /audit/ — Delivery Tracking
+
 - Sprint plans
 - Changelogs
 - Completion reports
@@ -98,6 +103,7 @@ This is your source of truth for specifications.
 Track what has been delivered and when.
 
 ### /kb/ — Knowledge Base
+
 - Sprint retrospectives
 - Epic retrospectives
 - Knowledge extracts
