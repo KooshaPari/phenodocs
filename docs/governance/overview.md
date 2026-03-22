@@ -15,7 +15,7 @@ Standards and processes for maintaining PhenoDocs.
 
 All reviewable changes follow this fixed sequence:
 
-```
+```text
 Draft → Auto-Validation → Review → Approval → Publish
   │             │              │        │         │
   │             │              │        │         └─ Deploy to production
@@ -37,34 +37,38 @@ Draft → Auto-Validation → Review → Approval → Publish
 ## Roles
 
 ### Documentation Lead
+
 - Strategy and governance
 - Release coordination
 - Quality audits
 
 ### Maintainers
+
 - Domain expertise
 - Quality control
 - Timely updates
 
 ### Contributors
+
 - Content creation
 - Follow guidelines
 - PR reviews
 
 ### Reviewers
+
 - Accuracy verification
 - Feedback
 
 ## Adding Projects
 
-### Criteria
+### Addition Criteria
 
 1. **Active project** — Has regular commits
 2. **Proper structure** — Follows doc taxonomy
 3. **Frontmatter** — All docs have required fields
 4. **Owner** — Designated maintainer
 
-### Process
+### Addition Process
 
 1. **Proposal** — Open issue requesting addition
 2. **Review** — Docs lead reviews structure
@@ -74,13 +78,13 @@ Draft → Auto-Validation → Review → Approval → Publish
 
 ## Removing Projects
 
-### Criteria
+### Removal Criteria
 
 1. **Abandoned** — No commits > 6 months
 2. **Archived** — Project archived
 3. **Requested** — Owner requests removal
 
-### Process
+### Removal Process
 
 1. **Notice** — 30 day warning
 2. **Archive** — Move to /archive/
@@ -91,7 +95,7 @@ Draft → Auto-Validation → Review → Approval → Publish
 
 PhenoDocs follows semantic versioning:
 
-```
+```text
 MAJOR.MINOR.PATCH
   │     │     │
   │     │     └─ Bug fixes

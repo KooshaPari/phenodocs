@@ -4,7 +4,7 @@ Understanding how PhenoDocs works under the hood.
 
 ## System Overview
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                        PhenoDocs Hub                             │
 ├─────────────────────────────────────────────────────────────────┤
@@ -56,7 +56,7 @@ gen = HubGenerator(
 gen.generate()
 ```
 
-### What it generates:
+### What it generates
 
 1. **index.md** — Landing page with project links
 2. **.vitepress/config.ts** — Navigation from project map
@@ -67,7 +67,8 @@ gen.generate()
 ### 1. Project Documents Created
 
 Agent or human creates docs in source project:
-```
+
+```text
 thegent/docs/ideas/2026-02-24-new-feature.md
 ```
 
@@ -125,10 +126,13 @@ author: agent | human
 ## Search & Indexing
 
 ### Human Search
+
 VitePress built-in search (Algolia or local)
 
 ### AI Search
+
 `.llms.txt` generation for each doc:
+
 ```bash
 python scripts/generate-llms-docs.py
 ```
@@ -138,12 +142,14 @@ Output: `.llms/docs/filename.llms.txt`
 ## Deployment
 
 ### Static Export
+
 ```bash
 npm run build
 # Deploy .vitepress/dist to any static host
 ```
 
 ### Docker
+
 ```dockerfile
 FROM node:20-alpine
 WORKDIR /app
