@@ -16,4 +16,5 @@
 
 ### Fixed
 
+- **CodeQL:** run `npm ci` + `npm run build` (same as deploy) so JavaScript/Vue under `.vitepress` is analyzed; autobuild alone did not extract VitePress sources.
 - Build failures from missing theme data JSON imports.
