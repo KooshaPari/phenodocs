@@ -23,7 +23,7 @@
     "markdownlint-cli": "^0.48.0",
     "oxlint": "^1.57.0",
     "typescript": "^6.0.2",
-    "vue-tsc": "^2.2.0"
+    "vue-tsc": "^3.2.6"
   },
   "engines": {
     "node": ">=20.0.0"
