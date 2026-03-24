@@ -12,7 +12,7 @@ A **full turn** finishes when work is **merged** to **`main`** or an approved **
 2. **GitHub visibility:** record PR link(s) in the PR body and optionally in `CHANGELOG.md` under **[Unreleased]**.
 3. **Changelog:** update root **`CHANGELOG.md`** for user-facing doc site or workflow changes.
 4. **Version:** bump **`package.json`** `version` when releasing a tagged docs build or publishing a semver story; otherwise state **“version: N/A”** in the PR.
-5. **Docs:** run **`pnpm run build`** before merge when `docs/` or `.vitepress/` changed.
+5. **Docs:** run **`bun run build`** before merge when `docs/` or `.vitepress/` changed (see [Toolchains](./tooling.md)).
 
 ## Commands
 
