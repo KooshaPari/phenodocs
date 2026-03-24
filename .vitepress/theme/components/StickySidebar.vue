@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useData } from 'vitepress'
+
+const { frontmatter, page } = useData()
+</script>
+
 <template>
   <aside class="sticky-sidebar">
     <slot />
