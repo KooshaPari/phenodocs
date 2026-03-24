@@ -11,7 +11,7 @@ Understanding how PhenoDocs works under the hood.
 │  .vitepress/          # VitePress config & theme                │
 │  docs/               # Hub-specific docs                         │
 │  projects/           # Aggregated project docs (submodules)     │
-│  package.json        # npm dependencies                         │
+│  package.json        # Bun / VitePress dependencies               │
 └─────────────────────────────────────────────────────────────────┘
          │
          ▼
@@ -89,7 +89,7 @@ docs hub --hub-dir ../phenodocs
 ### 4. VitePress Build
 
 ```bash
-npm run build
+bun run build
 # Output: .vitepress/dist
 ```
 
@@ -139,20 +139,20 @@ Output: `.llms/docs/filename.llms.txt`
 
 ### Static Export
 ```bash
-npm run build
+bun run build
 # Deploy .vitepress/dist to any static host
 ```
 
 ### Docker
 ```dockerfile
-FROM node:20-alpine
+FROM oven/bun:1-alpine
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 COPY . .
-RUN npm run build
+RUN bun run build
 EXPOSE 4173
-CMD ["npm", "run", "preview"]
+CMD ["bun", "run", "preview"]
 ```
 
 ## Performance Considerations

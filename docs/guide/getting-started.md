@@ -4,9 +4,10 @@ Welcome to PhenoDocs! This guide will help you set up and use the federation hub
 
 ## Prerequisites
 
-- Node.js 18+
-- npm or pnpm
-- Python 3.12+ (for docs_engine integration)
+- [Bun](https://bun.sh/) 1.x (package manager + runtime for this repo)
+- [uv](https://docs.astral.sh/uv/) + **CPython 3.14+** (pre-commit, `uv run` scripts)
+
+See [Toolchains](/guides/tooling).
 
 ## Installation
 
@@ -20,15 +21,14 @@ cd phenodocs
 ### 2. Install Dependencies
 
 ```bash
-npm install
-# or
-pnpm install
+bun install
+uv sync --group dev
 ```
 
 ### 3. Start Development Server
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 Visit `http://localhost:5173` to see your docs hub.
