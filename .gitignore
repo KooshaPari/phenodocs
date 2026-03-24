@@ -37,8 +37,6 @@ npm-debug.log*
 .roo/
 .amazonq/
 .github/copilot/
-.kittify/.dashboard
-
 
 # AI tool artifacts
 .claude/
