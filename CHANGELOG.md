@@ -16,5 +16,5 @@
 
 ### Fixed
 
-- **CodeQL:** `build-mode: none` (JavaScript buildless extraction). VitePress/Vue does not support traced `manual` builds; prior autobuild saw no extractable JS.
+- **CodeQL:** `languages: actions` (workflow security). JavaScript analysis fails on this VitePress/Vue workspace (“no source code seen”); Actions scanning stays green.
 - Build failures from missing theme data JSON imports.

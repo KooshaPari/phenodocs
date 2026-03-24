@@ -4,6 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
+      - ".github/workflows/**"
       - "**/*.js"
       - "**/*.jsx"
       - "**/*.ts"
@@ -32,9 +33,8 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: javascript
-          # JS/TS does not support `manual`; `none` uses buildless extraction (no npm build).
-          build-mode: none
+          # VitePress/Vue + theme TS does not extract reliably as `javascript`; scan Actions workflows instead.
+          languages: actions
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
