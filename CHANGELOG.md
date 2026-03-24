@@ -16,5 +16,5 @@
 
 ### Fixed
 
-- **CodeQL:** `build-mode: manual` plus `npm ci` + `npm run build` (same as deploy); avoids `analyze` re-invoking autobuild after the traced build.
+- **CodeQL:** `build-mode: none` (JavaScript buildless extraction). VitePress/Vue does not support traced `manual` builds; prior autobuild saw no extractable JS.
 - Build failures from missing theme data JSON imports.
