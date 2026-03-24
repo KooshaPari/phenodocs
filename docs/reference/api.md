@@ -20,10 +20,12 @@ HubGenerator(hub_dir: Path, projects: dict[str, str]) -> HubGenerator
 ```
 
 **Parameters:**
+
 - `hub_dir` — Output directory for the hub
 - `projects` — Dict mapping project names to doc paths
 
 **Example:**
+
 ```python
 gen = HubGenerator(
     hub_dir=Path("./phenodocs"),
@@ -45,11 +47,13 @@ def generate(self) -> None
 Write hub files. Idempotent — safe to call multiple times.
 
 **Creates:**
+
 - `index.md` — Landing page
 - `.vitepress/config.ts` — VitePress config
 - `package.json` — Dependencies
 
 **Example:**
+
 ```python
 gen.generate()
 print("Hub generated successfully!")
@@ -64,9 +68,11 @@ docs hub [OPTIONS]
 ```
 
 **Options:**
+
 - `--hub-dir PATH` — Hub output directory (default: "../docs-hub")
 
 **Example:**
+
 ```bash
 docs hub --hub-dir ./phenodocs
 ```
@@ -135,11 +141,12 @@ export default defineConfig({
 
 ## Return Values
 
-### generate()
+### generate() Return Value
 
 Returns `None`. Files are written directly to `hub_dir`.
 
 Check for success:
+
 ```python
 import os
 
