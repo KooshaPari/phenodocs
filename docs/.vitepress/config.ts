@@ -1,3 +1,6 @@
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
@@ -7,6 +10,19 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   ignoreDeadLinks: true,
+
+  vite: {
+    resolve: {
+      alias: {
+        '@phenodocs-theme': phenodocsTheme,
+      },
+    },
+    server: {
+      fs: {
+        allow: [phenodocsRoot],
+      },
+    },
+  },
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
@@ -59,6 +75,6 @@ export default defineConfig({
       ]
     },
     search: { provider: 'local' },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/KooshaPari/phenodocs' }]
+    socialLinks: [{ icon: 'github', link: 'https://github.com/kooshapari/phenodocs' }]
   }
 })
