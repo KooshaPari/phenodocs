@@ -24,7 +24,7 @@
   transform: translateY(-1px);
 }
 
-:root .doc-type-card:hover {
+:root:not(.dark) .doc-type-card:hover {
   border-color: var(--kc-accent-contrast);
 }
 

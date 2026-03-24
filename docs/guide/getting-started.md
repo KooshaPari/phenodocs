@@ -39,7 +39,7 @@ Visit `http://localhost:5173` to see your docs hub.
 
 Ensure your project documentation follows the doc taxonomy:
 
-```bash
+```text
 your-project/
 ├── docs/
 │   ├── ideas/           # Layer 1

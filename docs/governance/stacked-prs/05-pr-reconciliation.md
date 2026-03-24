@@ -74,7 +74,7 @@ Interpretation:
   - open PRs: 0
 
 Action note:
-If this dataset cannot be refreshed via `gh` due transient API 502, proceed
+If this dataset cannot be refreshed via `gh` due to transient API 502, proceed
 with the last stable snapshot and re-run before merge.
 
 ## Gate Templates and Labels
