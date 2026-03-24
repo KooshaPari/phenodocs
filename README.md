@@ -5,10 +5,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
 [![VitePress](https://img.shields.io/badge/VitePress-1.x-green.svg)](https://vitepress.dev/)
-[![Deploy](https://github.com/KooshaPari/phenodocs/actions/workflows/deploy.yml/badge.svg)](https://github.com/KooshaPari/phenodocs/actions/workflows/deploy.yml)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Ready-green)](https://kooshaPari.github.io/phenodocs/)
+[![Deploy](https://github.com/kooshapari/phenodocs/actions/workflows/deploy.yml/badge.svg)](https://github.com/kooshapari/phenodocs/actions/workflows/deploy.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Ready-green)](https://kooshapari.github.io/phenodocs/)
 
-**Live Demo**: https://kooshaPari.github.io/phenodocs/
+**Live Demo**: https://kooshapari.github.io/phenodocs/
 
 ## Overview
 
