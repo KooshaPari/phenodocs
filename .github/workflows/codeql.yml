@@ -34,8 +34,14 @@ jobs:
         with:
           languages: javascript
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install and build (VitePress)
+        run: npm ci && npm run build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
