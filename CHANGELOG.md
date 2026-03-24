@@ -16,5 +16,5 @@
 
 ### Fixed
 
-- **CodeQL:** run `npm ci` + `npm run build` (same as deploy) so JavaScript/Vue under `.vitepress` is analyzed; autobuild alone did not extract VitePress sources.
+- **CodeQL:** `languages: actions` for workflow security (matches `main`). JavaScript/TypeScript extraction is not used for this VitePress/Vue tree (“no source code seen” in prior JS runs); Actions scanning stays green in CI.
 - Build failures from missing theme data JSON imports.
