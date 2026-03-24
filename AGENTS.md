@@ -24,7 +24,7 @@
 - Execute forward-only migrations: extract shared code, update all callers, and remove duplicated local implementations.
 ## Full-turn delivery (this repo)
 
-- Each **full turn** that changes the site or workflow should end with **≥1 PR merged to `main`** or an approved **release** branch (multiple PRs per turn are allowed), with **GitHub-visible** history (`gh pr list`), **`CHANGELOG.md`** updated when user-visible, **`package.json` version** bumped or called out as N/A in the PR, and **`pnpm run build`** green when `docs/` or `.vitepress/` changed. See `docs/guides/full-turn-delivery.md`.
+- Each **full turn** that changes the site or workflow should end with **≥1 PR merged to `main`** or an approved **release** branch (multiple PRs per turn are allowed), with **GitHub-visible** history (`gh pr list`), **`CHANGELOG.md`** updated when user-visible, **`package.json` version** bumped or called out as N/A in the PR, and **`pnpm run build`** green when `docs/` or `.vitepress/` changed. See `docs/guides/full-turn-delivery.md`. For large planning batches, use **`docs/planning/full-turn-next50-20260326.md`**: **five parallel agents** (lanes A–E), **ten waves**, **50 tasks**, **DAG** via **Depends** (never more than five concurrent tasks).
 
 ## Phenotype Git and Delivery Workflow Protocol <!-- PHENOTYPE_GIT_DELIVERY_PROTOCOL -->
 

@@ -80,7 +80,8 @@ export default defineConfig({
           text: 'Planning',
           items: [
             { text: 'Rich workspace views', link: '/planning/rich-workspace-views' },
-            { text: 'Full-turn Next 24', link: '/planning/full-turn-next24-20260326' }
+            { text: 'Full-turn Next 50 (DAG)', link: '/planning/full-turn-next50-20260326' },
+            { text: 'Full-turn Next 24 (legacy)', link: '/planning/full-turn-next24-20260326' }
           ]
         }
       ],
