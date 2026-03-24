@@ -28,7 +28,8 @@ and/or check failures.
 ## Commands applied this cycle
 
 - `git worktree prune` executed in `cliproxyapi-plusplus`.
-- Re-review trigger posted: `agentapi++` PR #243 (`@coderabbitai full review`).
+- Re-review trigger on PR #243: `coderabbitai full review`
+  (posted as `@coderabbitai full review`).
 
 ## Immediate next sequence
 

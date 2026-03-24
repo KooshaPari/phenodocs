@@ -112,16 +112,9 @@
   --vp-c-default-soft: #14171b;
 }
 
-.vp-doc { line-height: 1.75; }
-.vp-doc h1 { font-weight: 700; letter-spacing: -0.03em; }
-.vp-doc h2 { font-weight: 600; letter-spacing: -0.02em; border-top: none; padding-top: 32px; }
-.vp-doc h3 { font-weight: 600; letter-spacing: -0.01em; }
-.vp-doc a { color: var(--vp-c-brand-1); text-decoration-color: rgba(126, 186, 181, 0.3); }
-.vp-doc a:hover { color: var(--kc-accent-hover); text-decoration-color: var(--kc-accent); }
-:root .vp-doc a { color: #4a9c97; }
-:root .vp-doc a:hover { color: #3e8a85; }
-.dark .vp-doc a { color: #7ebab5; }
-.dark .vp-doc a:hover { color: #95ccc8; }
+:root:not(.dark) .doc-type-card:hover {
+  border-color: var(--kc-accent-contrast);
+}
 
 .VPContent.has-sidebar { padding-left: 0; }
 .VPDoc .container { max-width: 780px; }
