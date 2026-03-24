@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- **Tooling:** **Bun** replaces npm/pnpm (`bun.lock`, `packageManager`); **uv** + **CPython ≥ 3.14** for Python/pre-commit (`pyproject.toml`, `uv.lock`, `.python-version`); **oxlint** (VoidZero/Oxc) + **TypeScript ^6** strict + **vue-tsc** in `bun run check`. CI **Deploy** and **Security Guard** use Bun + uv. Removed duplicate `docs/package.json`.
+- **`docs/guides/tooling.md`** — Bun, uv, oxlint, TS policy.
+
 ### Added
 
 - **`docs/planning/full-turn-next50-20260326.md`** — **Next 50** batch: five lanes (A–E), ten waves (W1–W10), explicit **Depends** DAG; supersedes Next 24 as default batch size.

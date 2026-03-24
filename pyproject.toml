@@ -1,0 +1,13 @@
+[project]
+name = "phenodocs"
+version = "0.1.0"
+description = "Tooling and scripts for the PhenoDocs VitePress hub (uv + CPython 3.14+)."
+requires-python = ">=3.14"
+readme = "README.md"
+dependencies = []
+
+[dependency-groups]
+dev = ["pre-commit>=4.0.0"]
+
+[tool.uv]
+package = false

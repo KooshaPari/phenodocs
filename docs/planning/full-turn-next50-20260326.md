@@ -59,7 +59,7 @@ title: Full-turn Next 50 (DAG)
 | T11 | A | **Stacked PRs:** one sentence in **AGENTS** — each layer merges before closing turn; linear history for policy-gate. | T06 |
 | T12 | B | **When not to bump** version (typo, internal-only) — README or small doc. | T07 |
 | T13 | C | **Workspace views → changelog** page links root **CHANGELOG** clearly. | T08 |
-| T14 | D | **CI parity:** local `pnpm run build` / `npm run build` matches **Deploy** job. | T09 |
+| T14 | D | **CI parity:** local `bun run build` matches **Deploy** job. | T09 |
 | T15 | E | **Metrics:** merged PR count / month in roadmap narrative (manual is OK). | T10 |
 
 ## W4 — Quality + docs
@@ -69,14 +69,14 @@ title: Full-turn Next 50 (DAG)
 | T16 | A | **PR template** snippet: checklist for changelog, version note, `gh` link. | T11 |
 | T17 | B | Research **changesets** vs **git-cliff**; one-paragraph recommendation in planning note. | T12 |
 | T18 | C | **`docs/views/commits`:** sketch **CI job** to refresh `commit-log.json` (issue or session artifact). | T13 |
-| T19 | D | **Lint:** run `pnpm run lint` on PR when only `docs/**/*.md` touched (workflow or doc). | T14 |
+| T19 | D | **Lint:** run `bun run lint` on PR when only `docs/**/*.md` touched (workflow or doc). | T14 |
 | T20 | E | **Cross-link** [AgilePlus](https://github.com/KooshaPari/AgilePlus) `full-turn-delivery` one sentence (org norm). | T15 |
 
 ## W5 — Automation + federation
 
 | ID | Lane | Task | Depends |
 |----|------|------|---------|
-| T21 | A | **Dead links:** `check-links` / `npm run check-links` before merge when links change. | T16 |
+| T21 | A | **Dead links:** `bun run check-links` (uses `uv run python …`) before merge when links change. | T16 |
 | T22 | B | **Sidebar:** keep **Planning** + **Workspace views** in sync with new pages. | T17 |
 | T23 | C | **Rich workspace views** plan: pick **three** implementation tasks for next implementation PR. | T18 |
 | T24 | D | **Security guard** workflows: document what runs on PR vs `main`. | T19 |

@@ -38,7 +38,8 @@ export default defineConfig({
           items: [
             { text: 'Introduction', link: '/guide/getting-started' },
             { text: 'Architecture', link: '/guide/architecture' },
-            { text: 'Full-turn delivery', link: '/guides/full-turn-delivery' }
+            { text: 'Full-turn delivery', link: '/guides/full-turn-delivery' },
+            { text: 'Toolchains (Bun, uv)', link: '/guides/tooling' }
           ]
         }
       ],

@@ -22,14 +22,14 @@
 9. Document **when not to bump** (typo fix, internal-only) in PR template suggestion.
 10. Optional: **`changesets`** or **git-cliff**—research-only row; pick one in a follow-up ADR.
 11. Link **CHANGELOG** from **Workspace views → changelog** page.
-12. **Pages build:** confirm `pnpm run build` in CI matches local.
+12. **Pages build:** confirm `bun run build` in CI matches local.
 
 ## Child agent 3 — Docs + views
 
 13. **Full-turn guide** linked from [views index](/views/) footer or callout.
 14. **Roadmap** row: “Full-turn discipline” under Next milestones.
 15. **`docs/views/commits`:** CI job sketch to refresh `commit-log.json` (issue or session note).
-16. **Lint:** `pnpm run lint` on PR when only `docs/**/*.md` touched.
+16. **Lint:** `bun run lint` on PR when only `docs/**/*.md` touched.
 17. **Dead links:** run `check-links` script when available before merge.
 18. **Sidebar:** keep **Workspace views** + **Planning** in sync with new pages.
 
