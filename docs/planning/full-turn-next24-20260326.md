@@ -1,5 +1,7 @@
 # Next 24 — full-turn + shipping hygiene (PhenoDocs)
 
+> **Superseded for batch sizing** by **[Full-turn Next 50](./full-turn-next50-20260326.md)** (five agents × ten waves, DAG). This page remains as a shorter checklist.
+
 **Layout:** four child agents × six items = **24**. **Six agents × four items** is equivalent.
 
 **Norm:** [Full-turn delivery](../guides/full-turn-delivery.md)
