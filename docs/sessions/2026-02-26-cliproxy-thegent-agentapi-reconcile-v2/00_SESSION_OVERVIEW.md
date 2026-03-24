@@ -53,23 +53,16 @@
 
 ### thegent
 
-| PR | Branch | Merge state | Issue comments | Review comments | Failing checks
-| Key issue |
+| PR | Branch | Merge state | Issue comments | Review comments | Failing checks | Key issue |
 |---|---|---|---:|---:|---:|---|
-| 498 | garden/release-framework | BLOCKED | 2 | 0 | 45 | Global infra stack
-fail (`Build wheels`, `Build Docs`, `Comprehensive Benchmark`, platform tests) |
-| 497 | chore/cliproxyctl-auto-install | BLOCKED | 2 | 0 | 19 | Same infra stack
-as #498 |
-| 496 | PR: fix/tests3 | DIRTY | 4 | 0 | 2 | Mergeability noise despite mostly
-green checks |
+| 498 | garden/release-framework | BLOCKED | 2 | 0 | 45 | Global infra stack fail (`Build wheels`, `Build Docs`, `Comprehensive Benchmark`, platform tests) |
+| 497 | chore/cliproxyctl-auto-install | BLOCKED | 2 | 0 | 19 | Same infra stack as #498 |
+| 496 | PR: fix/tests3 | DIRTY | 4 | 0 | 2 | Mergeability noise despite mostly green checks |
 | 494 | fix/orjson-v2 | DIRTY | 11 | 1 | 1 | `CodeRabbit` only; comment debt |
-| 493 | fix/tests-v4 | DIRTY | 2 | 0 | 0 | Mostly green, mergeability still
-dirty |
+| 493 | fix/tests-v4 | DIRTY | 2 | 0 | 0 | Mostly green, mergeability still dirty |
 | 482 | no-litellm | BLOCKED | 2 | 2 | 26 | Unresolved + infra gates |
-| 480 | fix/cli-test-fixes | BLOCKED | 2 | 2 | 17 | Unresolved review threads +
-test infra failures |
-| 478 | fix/remove-broken-dag-files | DIRTY | 2 | 6 | 2 | 5+ unresolved review
-threads |
+| 480 | fix/cli-test-fixes | BLOCKED | 2 | 2 | 17 | Unresolved review threads + test infra failures |
+| 478 | fix/remove-broken-dag-files | DIRTY | 2 | 6 | 2 | 5+ unresolved review threads |
 
 Notes:
 
@@ -78,8 +71,7 @@ Notes:
 
 ### agentapi-plusplus
 
-| PR | Branch | Merge state | Issue comments | Review comments | Failing checks
-| Key issue |
+| PR | Branch | Merge state | Issue comments | Review comments | Failing checks | Key issue |
 |---|---|---|---:|---:|---:|---|
 | 263 | fix/test-msg-format | BLOCKED | 4 | 0 | 5 | CodeRabbit needed |
 | 262 | fix/slash-commands | BLOCKED | 4 | 0 | 5 | CodeRabbit needed |
@@ -88,8 +80,7 @@ Notes:
 | 259 | fix/pr16 | DIRTY | 5 | 0 | 5 | CodeRabbit needed |
 | 258 | fix/pr14 | DIRTY | 4 | 0 | 5 | CodeRabbit needed |
 | 257 | fix/pr13 | DIRTY | 2 | 0 | 5 | CodeRabbit needed |
-| 256 | garden/git-tightening | BLOCKED | 2 | 0 | 4 | Mix of infra and review
-queue |
+| 256 | garden/git-tightening | BLOCKED | 2 | 0 | 4 | Mix of infra and review queue |
 | 255 | fix/pagination | DIRTY | 4 | 0 | 1 | CodeRabbit needed |
 | 254 | fix/opencodescreen-diff | DIRTY | 5 | 0 | 5 | CodeRabbit needed |
 | 253 | fix/initial-prompt-tests | DIRTY | 4 | 0 | 5 | CodeRabbit needed |
@@ -100,10 +91,8 @@ queue |
 | 248 | fix/askuser-input | DIRTY | 4 | 0 | 5 | CodeRabbit needed |
 | 247 | fix/afero-walk | DIRTY | 4 | 0 | 5 | CodeRabbit needed |
 | 246 | fix/add-agent-info | DIRTY | 2 | 0 | 5 | CodeRabbit needed |
-| 243 | fix/voice-input | DIRTY | 4 | 3 | 1 | Unresolved threaded comments + bot
-review |
-| 242 | chore/docs-scaffold-and-test-fix | DIRTY | 4 | 12 | 1 | Substantial
-threaded review backlog |
+| 243 | fix/voice-input | DIRTY | 4 | 3 | 1 | Unresolved threaded comments + bot review |
+| 242 | chore/docs-scaffold-and-test-fix | DIRTY | 4 | 12 | 1 | Substantial threaded review backlog |
 
 ## Re-review Actions Executed
 
