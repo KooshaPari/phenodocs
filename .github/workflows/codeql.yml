@@ -33,6 +33,7 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: javascript
+          build-mode: manual
 
       - name: Setup Node
         uses: actions/setup-node@v4
