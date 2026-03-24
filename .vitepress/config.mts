@@ -66,7 +66,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: `https://github.com/KooshaPari/${repoName}` }
+      { icon: 'github', link: `https://github.com/kooshapari/${repoName}` }
     ],
 
     footer: {
@@ -79,7 +79,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: `https://github.com/KooshaPari/${repoName}/edit/main/docs/:path`,
+      pattern: `https://github.com/kooshapari/${repoName}/edit/main/docs/:path`,
       text: 'Edit this page on GitHub'
     },
 
