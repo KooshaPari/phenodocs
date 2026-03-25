@@ -3,16 +3,6 @@ set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
 
-# Skip ggshield in CI environments if not available
-if [[ "${CI:-}" == "true" ]]; then
-  if ! command -v ggshield >/dev/null 2>&1 && \
-     ! command -v uvx >/dev/null 2>&1 && \
-     ! command -v uv >/dev/null 2>&1; then
-    echo "[security-guard] CI environment detected and ggshield not available, skipping secret scan"
-    exit 0
-  fi
-fi
-
 if command -v ggshield >/dev/null 2>&1; then
   GGSHIELD=(ggshield)
 elif command -v uvx >/dev/null 2>&1; then
@@ -20,9 +10,8 @@ elif command -v uvx >/dev/null 2>&1; then
 elif command -v uv >/dev/null 2>&1; then
   GGSHIELD=(uv tool run ggshield)
 else
-  echo "[security-guard] WARNING: ggshield not installed. Install with: pipx install ggshield or uv tool install ggshield" >&2
-  echo "[security-guard] Skipping secret scan"
-  exit 0
+  echo "ERROR: ggshield not installed. Install with: pipx install ggshield or uv tool install ggshield" >&2
+  exit 1
 fi
 
 echo "[security-guard] Running ggshield secret scan"

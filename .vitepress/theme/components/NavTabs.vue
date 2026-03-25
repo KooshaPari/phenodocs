@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useData } from 'vitepress'
 
 interface Tab {
@@ -24,7 +24,7 @@ const activeIndex = computed(() => {
   })
 })
 
-function isActive(_tab: Tab, index: number): boolean {
+function isActive(tab: Tab, index: number): boolean {
   return activeIndex.value === index
 }
 

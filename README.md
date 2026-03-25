@@ -10,6 +10,10 @@
 
 **Live Demo**: https://kooshapari.github.io/phenodocs/
 
+## Shipping / full turn
+
+Every merged wave should land via **pull request** to **`main`** (or a **release** branch), update **`CHANGELOG.md`** when the change is user-visible, and keep **`pnpm run build`** green for doc config changes. See **`docs/guides/full-turn-delivery.md`**.
+
 ## Overview
 
 PhenoDocs solves the problem of maintaining multiple documentation sites by providing a federation layer that:
@@ -42,6 +46,8 @@ npm install
 # or
 pnpm install
 ```
+
+After cloning, use **`gh pr list`** / **`gh pr view`** (GitHub CLI) to see open PRs and merge status; **`gh pr view --web`** opens the current branch’s PR in the browser.
 
 ### Running Locally
 

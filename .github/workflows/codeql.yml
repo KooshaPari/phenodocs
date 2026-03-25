@@ -7,9 +7,15 @@ on:
       - ".github/workflows/**"
       - "**/*.js"
       - "**/*.jsx"
+      - "**/*.mjs"
+      - "**/*.cjs"
       - "**/*.ts"
       - "**/*.tsx"
       - "**/*.mts"
+      - "**/*.cts"
+      - "**/*.vue"
+      - ".github/workflows/codeql.yml"
+      - ".github/codeql/**"
   push:
     branches: [main]
   workflow_dispatch:
@@ -31,11 +37,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
-          # VitePress/Vue + theme TS does not extract reliably as `javascript`; scan Actions workflows instead.
-          languages: actions
+          languages: javascript-typescript
+          build-mode: none
+          config-file: ./.github/codeql/codeql-config.yml
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4

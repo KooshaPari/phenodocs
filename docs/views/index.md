@@ -12,4 +12,4 @@ Structured **modules** (and pages) for plan-, research-, spec-, and work-oriente
 
 **Plan:** [Rich workspace views](/planning/rich-workspace-views) (roadmap for implementation).
 
-**Shipping:** [Full-turn delivery](/guides/full-turn-delivery) (PR merge, changelog, version, docs). **Next batch:** [Full-turn Next 50](/planning/full-turn-next50-20260326) — five agents, ten waves, DAG.
+**Shipping:** [Full-turn delivery](/guides/full-turn-delivery) (PR merge, changelog, version, docs).

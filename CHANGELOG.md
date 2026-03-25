@@ -2,16 +2,10 @@
 
 ## [Unreleased]
 
-### Changed
-
-- **Tooling:** **Bun** replaces npm/pnpm (`bun.lock`, `packageManager`); **uv** + **CPython ≥ 3.14** for Python/pre-commit (`pyproject.toml`, `uv.lock`, `.python-version`); **oxlint** (VoidZero/Oxc) + **TypeScript ^6** strict + **vue-tsc** in `bun run check`. CI **Deploy** and **Security Guard** use Bun + uv. Removed duplicate `docs/package.json`.
-- **`docs/guides/tooling.md`** — Bun, uv, oxlint, TS policy.
-
 ### Added
 
-- **`docs/planning/full-turn-next50-20260326.md`** — **Next 50** batch: five lanes (A–E), ten waves (W1–W10), explicit **Depends** DAG; supersedes Next 24 as default batch size.
-- **`docs/guides/full-turn-delivery.md`** — PR merge to `main`/release, `gh`, changelog, version, docs; **batch planning** links Next 50; **`docs/planning/full-turn-next24-20260326.md`** (legacy Next 24).
-- **`docs/views/index.md`** / **`docs/views/wbs.md`** — **Shipping** + Next 50 / DAG pointers.
+- **`docs/views/index.md`** — **Shipping** row linking to the full-turn delivery guide.
+- **`docs/guides/full-turn-delivery.md`** — PR merge to `main`/release, `gh` visibility, changelog, version, docs build; **`docs/planning/full-turn-next24-20260326.md`** — Next 24 execution plan.
 - **`AGENTS.md` / `README.md`** — full-turn expectations.
 - **Workspace views** hub: `/views/` — changelog, commit log, WBS entry points.
 - **Planning:** `docs/planning/rich-workspace-views.md` — product plan for rich plan/research/spec/work modules, roadmap, changelog, git log, WBS.
@@ -22,5 +16,5 @@
 
 ### Fixed
 
-- **CodeQL:** `languages: actions` (workflow security). JavaScript analysis fails on this VitePress/Vue workspace (“no source code seen”); Actions scanning stays green.
+- **CodeQL:** run `npm ci` + `npm run build` (same as deploy) so JavaScript/Vue under `.vitepress` is analyzed; autobuild alone did not extract VitePress sources.
 - Build failures from missing theme data JSON imports.
