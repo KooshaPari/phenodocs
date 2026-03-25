@@ -3,17 +3,12 @@
 > VitePress Federation Hub — Aggregate documentation from multiple projects into a unified portal
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Bun](https://img.shields.io/badge/bun-1.x-black?logo=bun)](https://bun.sh/)
-[![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
+[![Python Version](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
 [![VitePress](https://img.shields.io/badge/VitePress-1.x-green.svg)](https://vitepress.dev/)
 [![Deploy](https://github.com/kooshapari/phenodocs/actions/workflows/deploy.yml/badge.svg)](https://github.com/kooshapari/phenodocs/actions/workflows/deploy.yml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Ready-green)](https://kooshapari.github.io/phenodocs/)
 
 **Live Demo**: https://kooshapari.github.io/phenodocs/
-
-## Shipping / full turn
-
-Every merged wave should land via **pull request** to **`main`** (or a **release** branch), update **`CHANGELOG.md`** when the change is user-visible, and keep **`bun run build`** green for doc config changes. See **`docs/guides/full-turn-delivery.md`** and **`docs/guides/tooling.md`**.
 
 ## Overview
 
@@ -42,29 +37,23 @@ PhenoDocs solves the problem of maintaining multiple documentation sites by prov
 git clone https://github.com/yourorg/phenodocs.git
 cd phenodocs
 
-# Install JS deps (Bun) and Python tooling (uv, CPython 3.14+)
-curl -fsSL https://bun.sh/install | bash   # if Bun not installed
-curl -LsSf https://astral.sh/uv/install.sh | sh   # if uv not installed
-bun install
-uv sync --group dev
+# Install dependencies
+npm install
+# or
+pnpm install
 ```
-
-After cloning, use **`gh pr list`** / **`gh pr view`** (GitHub CLI) to see open PRs and merge status; **`gh pr view --web`** opens the current branch’s PR in the browser.
 
 ### Running Locally
 
 ```bash
 # Development server
-bun run dev
+npm run dev
 
 # Build for production
-bun run build
+npm run build
 
 # Preview production build
-bun run preview
-
-# Oxlint + vue-tsc + link stub
-bun run check
+npm run preview
 ```
 
 ### Generating the Hub
@@ -186,8 +175,8 @@ thegent_doc_hub_generate(hub_dir="../phenodocs")
 ### Building
 
 ```bash
-bun run build
-bun run preview
+npm run build
+npm run preview
 ```
 
 ## License
