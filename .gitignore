@@ -55,3 +55,4 @@ npm-debug.log*
 .github/copilot-instructions.md
 .claudeignore
 .llmignore
+worktrees/phenodocs/dotagents
