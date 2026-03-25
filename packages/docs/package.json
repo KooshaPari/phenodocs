@@ -24,5 +24,14 @@
     "theme",
     "documentation"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KooshaPari/phenodocs.git",
+    "directory": "packages/docs"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  }
 }
