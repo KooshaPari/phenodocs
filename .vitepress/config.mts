@@ -1,21 +1,27 @@
-import { defineConfig } from 'vitepress'
+import { createPhenotypeConfig } from '@phenotype/docs/config'
 
 // Environment-based configuration for GitHub Pages compatibility
 const isPagesBuild = process.env.GITHUB_ACTIONS === 'true' || process.env.GITHUB_PAGES === 'true'
 const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'phenodocs'
 const docsBase = isPagesBuild ? `/${repoName}/` : '/'
 
-export default defineConfig({
+export default createPhenotypeConfig({
   title: 'PhenoDocs',
   description: 'Federation hub for multi-project documentation',
   lang: 'en-US',
   srcDir: 'docs',
   base: docsBase,
-  lastUpdated: true,
-  cleanUrls: true,
+  srcDir: 'docs',
+  githubOrg: 'KooshaPari',
+  githubRepo: repoName,
 
-  head: [
-    ['link', { rel: 'icon', href: `${docsBase}favicon.ico` }],
+  nav: [
+    { text: 'Guide', link: '/guide/getting-started' },
+    { text: 'Architecture', link: '/guide/architecture' },
+    { text: 'API', link: '/reference/api' },
+    { text: 'Governance', link: '/governance/overview' },
+    { text: 'Roadmap', link: '/roadmap/' },
+    { text: 'Workspace views', link: '/views/' },
   ],
 
   themeConfig: {
@@ -124,13 +130,13 @@ export default defineConfig({
     breadcrumb: true
   },
 
-  markdown: {
-    lineNumbers: true,
-    theme: {
-      light: 'github-light',
-      dark: 'github-dark'
+  overrides: {
+    themeConfig: {
+      logo: '/logo.svg',
+      breadcrumb: true,
     },
-    anchorLinks: true
+    markdown: {
+      anchorLinks: true,
+    },
   },
-  ignoreDeadLinks: true
 })
