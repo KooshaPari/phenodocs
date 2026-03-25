@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 <script setup lang="ts">
 import { useData } from 'vitepress'
 
 const { frontmatter } = useData()
 </script>
 
+=======
+>>>>>>> upstream/main
 <template>
   <header class="sticky-header">
     <slot />

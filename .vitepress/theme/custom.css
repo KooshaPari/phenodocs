@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ═══════════════════════════════════════════════════════════════
  * Keycap Palette - Phenotype Shared VitePress Theme
  *
@@ -190,3 +191,47 @@ div[class*='language-'] code { font-size: 13px; }
 
 .category-switcher { display: flex; align-items: center; gap: 0.5rem; margin: 1rem 0 1.5rem; }
 .category-switcher select { min-width: 220px; padding: 0.4rem 0.5rem; }
+=======
+/* PhenoDocs — imports the shared Keycap Palette */
+@import './keycap-palette.css';
+
+/* ── PhenoDocs-specific overrides ── */
+
+/* Doc type cards (PhenoDocs hub only) */
+.doc-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.doc-type-card {
+  padding: 16px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.doc-type-card:hover {
+  border-color: var(--kc-accent);
+  transform: translateY(-1px);
+}
+
+:root:not(.dark) .doc-type-card:hover {
+  border-color: var(--kc-accent-contrast);
+}
+
+.doc-type-card .card-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  margin-bottom: 4px;
+}
+
+.doc-type-card .card-desc {
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+  line-height: 1.5;
+}
+>>>>>>> upstream/main

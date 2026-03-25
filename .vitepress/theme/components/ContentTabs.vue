@@ -1,5 +1,9 @@
 <script setup lang="ts">
+<<<<<<< HEAD
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+=======
+import { ref, computed, onMounted, watch } from 'vue'
+>>>>>>> upstream/main
 import { useRoute } from 'vitepress'
 
 interface Tab {
@@ -93,7 +97,11 @@ watch(() => route.path, () => {
   loadPersistedTab()
 })
 
+<<<<<<< HEAD
 function handleKeydown(event: KeyboardEvent, tabId: string) {
+=======
+function handleKeydown(event: KeyboardEvent, _tabId: string) {
+>>>>>>> upstream/main
   if (tabs.value.length <= 1) return
 
   const currentIndex = tabs.value.findIndex(t => t.id === activeTabId.value)

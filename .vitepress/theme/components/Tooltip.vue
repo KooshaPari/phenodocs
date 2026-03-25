@@ -1,5 +1,9 @@
 <script setup lang="ts">
+<<<<<<< HEAD
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+=======
+import { ref, onUnmounted } from 'vue'
+>>>>>>> upstream/main
 
 const props = withDefaults(defineProps<{
   content: string

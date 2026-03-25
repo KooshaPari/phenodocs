@@ -1,10 +1,12 @@
 # Dependencies
 node_modules/
 .pnpm-store/
+.venv/
 
 # Build outputs
 .vitepress/dist/
 .vitepress/cache/
+.vitepress/.temp/
 
 # IDE
 .idea/
@@ -36,8 +38,11 @@ npm-debug.log*
 .roo/
 .amazonq/
 .github/copilot/
+<<<<<<< HEAD
 .kittify/.dashboard
 
+=======
+>>>>>>> upstream/main
 
 # AI tool artifacts
 .claude/

@@ -4,9 +4,10 @@ Welcome to PhenoDocs! This guide will help you set up and use the federation hub
 
 ## Prerequisites
 
-- Node.js 18+
-- npm or pnpm
-- Python 3.12+ (for docs_engine integration)
+- [Bun](https://bun.sh/) 1.x (package manager + runtime for this repo)
+- [uv](https://docs.astral.sh/uv/) + **CPython 3.14+** (pre-commit, `uv run` scripts)
+
+See [Toolchains](/guides/tooling).
 
 ## Installation
 
@@ -20,15 +21,14 @@ cd phenodocs
 ### 2. Install Dependencies
 
 ```bash
-npm install
-# or
-pnpm install
+bun install
+uv sync --group dev
 ```
 
 ### 3. Start Development Server
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 Visit `http://localhost:5173` to see your docs hub.
@@ -39,7 +39,7 @@ Visit `http://localhost:5173` to see your docs hub.
 
 Ensure your project documentation follows the doc taxonomy:
 
-```
+```text
 your-project/
 ├── docs/
 │   ├── ideas/           # Layer 1
@@ -53,11 +53,13 @@ your-project/
 ### Step 2: Link Your Project
 
 Option A: Git Submodule
+
 ```bash
 git submodule add https://github.com/yourorg/your-project-docs.git projects/your-project
 ```
 
 Option B: Update HubGenerator
+
 ```python
 from docs_engine.hub.generator import HubGenerator
 
@@ -75,6 +77,7 @@ docs hub --hub-dir .
 ## Understanding the Views
 
 ### /lab/ — Working Documents
+
 - IdeaNotes
 - Research documents
 - Debug logs
@@ -83,6 +86,7 @@ docs hub --hub-dir .
 Use this view for active experimentation and ideation.
 
 ### /docs/ — Formal Specifications
+
 - Product Requirements (PRDs)
 - Architecture Decision Records (ADRs)
 - Functional Requirements
@@ -91,6 +95,7 @@ Use this view for active experimentation and ideation.
 This is your source of truth for specifications.
 
 ### /audit/ — Delivery Tracking
+
 - Sprint plans
 - Changelogs
 - Completion reports
@@ -98,6 +103,7 @@ This is your source of truth for specifications.
 Track what has been delivered and when.
 
 ### /kb/ — Knowledge Base
+
 - Sprint retrospectives
 - Epic retrospectives
 - Knowledge extracts

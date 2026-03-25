@@ -15,7 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+<<<<<<< HEAD
         uses: actions/checkout@v4
+=======
+        uses: actions/checkout@v6
+>>>>>>> upstream/main
         with:
           fetch-depth: 0
 
@@ -27,6 +31,14 @@ jobs:
           test -f .github/hooks/security-guard.sh
           test -x .github/hooks/security-guard.sh
 
+<<<<<<< HEAD
+=======
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+>>>>>>> upstream/main
       - name: Run security guard hook
         run: |
           .github/hooks/pre-commit
