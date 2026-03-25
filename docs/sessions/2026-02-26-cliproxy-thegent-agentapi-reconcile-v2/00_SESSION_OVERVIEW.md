@@ -39,6 +39,7 @@
 | 478 | fix/remove-broken-dag-files | DIRTY | 2 | 6 | 2 | 5+ unresolved review threads |
 
 Notes:
+
 - branch audit shows mixed mergeability metadata; treat as a **batch-first stabilization** where shared CI is fixed before per-PR conflict repair.
 
 ### agentapi-plusplus
@@ -90,7 +91,6 @@ Notes:
 - `gh pr checks <PR> --repo KooshaPari/agentapi-plusplus --json name,state`
 - `gh pr checks <PR> --repo KooshaPari/thegent --json name,state`
 
-
 ## Offline Reconcile Addendum (2026-02-26)
 
 - `gh auth` is currently invalid in this environment; live PR check/query commands are blocked.
@@ -117,18 +117,21 @@ Notes:
 ## Execution Queue (Generated Locally, No GH Access)
 
 ### Wave A: branch baseline normalization (safe, local-only)
+
 1) `cliproxyapi++`: stay on `main`
 2) `cliproxyapi-plusplus`: keep `main`; defer pushing to upstream until auth restored
 3) `thegent`: keep `main`
 4) `agentapi-plusplus`: keep `main`
 
 ### Wave B: local branch backlog (high signal)
+
 - `cliproxyapi-plusplus` local backlog count: 207 (`archive/*`, `ci/*`, `ci-fix/*`, `migrated/*`, many `tmp-*`)
 - `cliproxyapi++` local backlog count: 64 (`ci/*`, `feat/*`, `migrated/*`, and `main-restore`)
 - `thegent` local backlog count: 7
 - `agentapi-plusplus` local backlog count: 3
 
 ### Suggested local cleanup command set (run only after GH validation)
+
 - `gh pr list --repo KooshaPari/cliproxyapi-plusplus --state all --limit 500` and compare PR/head mapping
 - `for b in $(git -C /Users/kooshapari/CodeProjects/Phenotype/repos/cliproxyapi-plusplus branch | sed 's/^* //'); do`\n  `printf "%s\n" "$b"; done` -> map to PR heads
 - stale-close sweep command pattern:
@@ -136,11 +139,13 @@ Notes:
 - keep worktree branches in `*-wtrees/*` untouched
 
 ### Review/CI debt priority (when GH is available)
+
 1. `thegent`: unblock PR #478 first, then #480, #482, then PRs #494/#493/#493-like mergeability noise
 2. `agentapi-plusplus`: fix check-blocked PRs first (`#263`,`#262`,`#260`...), then conflict-heavy (`#261,#260,#259...`)
 3. `cliproxyapi-plusplus`: stabilize check-name drift + analyze/build, then lane replay from lowest PR first (`492..616` as archived ordering snapshot)
 
 ### Hard guardrails
+
 - Do not force-delete or hard-rewrite `main` in any canonical repo.
 - Avoid `git reset`/`git checkout` away from branch context for local canonicals except explicit requested merges.
 
@@ -208,6 +213,7 @@ gh pr comment KooshaPari/thegent 494 --body "@coderabbitai full review" || true
 ## Repo Branch Closure Matrix (local audit, deterministic)
 
 ### 1) cliproxyapi++
+
 - total non-merged: 64
 - candidate cleanup classes:
   - `tmp-`: 1 (`tmp-sign-test`, plus any other temp prefixed)
@@ -222,6 +228,7 @@ gh pr comment KooshaPari/thegent 494 --body "@coderabbitai full review" || true
   - stale `ci/*`/`migrated/*` that are fully represented as completed PR stacks
 
 ### 2) cliproxyapi-plusplus
+
 - total non-merged: 207
 - candidate cleanup classes:
   - `tmp-`: 13
@@ -241,6 +248,7 @@ gh pr comment KooshaPari/thegent 494 --body "@coderabbitai full review" || true
   - `replay/*` and `reintegrate/*` after PR mapping check
 
 ### 3) thegent
+
 - total non-merged: 8
 - candidate cleanup classes:
   - `fix/`: 4
@@ -254,6 +262,7 @@ gh pr comment KooshaPari/thegent 494 --body "@coderabbitai full review" || true
   6. remaining garden branches
 
 ### 4) agentapi-plusplus
+
 - total non-merged: 3
 - candidate cleanup classes:
   - `garden/`: 1 (`garden/release-framework`)
@@ -263,6 +272,7 @@ gh pr comment KooshaPari/thegent 494 --body "@coderabbitai full review" || true
   2. garden/release-framework
 
 ### Live execution workflow (when `gh` auth is valid)
+
 - `gh pr list -R KooshaPari/<repo> --state open --json number,headRefName,mergeStateStatus,reviewDecision,isDraft,updatedAt`
 - map each `headRefName` to local non-merged branches
 - remove branch only if one of:

@@ -11,6 +11,7 @@ Use this module for PR cleanup where open work is noisy, stacked, or review-debt
 ## Merge Stack Contracts
 
 Every PR should include:
+
 - `Depends-on`
 - `Stack-Layer` (L1/L2/L3)
 - `Release-Channel` (alpha/beta/rc/canary/release)
@@ -18,6 +19,7 @@ Every PR should include:
 - `API-Shape-Impact`
 
 Hard rule:
+
 - Do not merge a child PR if parent API-shaping PR is not merged first.
 - If a child PR includes the same feature family but different risk profile, treat it as a separate stack lane.
 
@@ -30,6 +32,7 @@ Example for one feature family:
 - `1.2` (rc): web renderer (`depends_on: 1.0`, higher risk, beta/rc-only)
 
 Interpretation:
+
 - `1.1` is same feature family as `1.0`; same merge path dependency.
 - `1.2` may ship later than `1.1` if risk requires `rc`.
 

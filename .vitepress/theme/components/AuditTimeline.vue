@@ -14,8 +14,11 @@ const entries = ref<AuditEntry[]>([])
 
 onMounted(async () => {
   try {
-    const mod = await import('../../data/audit-log.json')
-    entries.value = mod.default ?? mod
+    const response = await fetch('/data/audit-log.json')
+    if (response.ok) {
+      const data = await response.json()
+      entries.value = data.entries ?? data ?? []
+    }
   } catch {
     entries.value = []
   }

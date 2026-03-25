@@ -37,21 +37,25 @@ Draft → Auto-Validation → Review → Approval → Publish
 ## Roles
 
 ### Documentation Lead
+
 - Strategy and governance
 - Release coordination
 - Quality audits
 
 ### Maintainers
+
 - Domain expertise
 - Quality control
 - Timely updates
 
 ### Contributors
+
 - Content creation
 - Follow guidelines
 - PR reviews
 
 ### Reviewers
+
 - Accuracy verification
 - Feedback
 
