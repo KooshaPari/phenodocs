@@ -48,9 +48,8 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: javascript-typescript
-          build-mode: none
-          config-file: ./.github/codeql/codeql-config.yml
+          # VitePress/Vue + theme TS does not extract reliably as `javascript`; scan Actions workflows instead.
+          languages: actions
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
