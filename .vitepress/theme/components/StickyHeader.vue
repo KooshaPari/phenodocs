@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useData } from 'vitepress'
+
+useData()
+</script>
+
 <template>
   <header class="sticky-header">
     <slot />
