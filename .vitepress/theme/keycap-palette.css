@@ -20,8 +20,8 @@
 /* ── Shared Tokens ── */
 
 :root {
-  --vp-font-family-base: "Inter", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
-  --vp-font-family-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
+  --vp-font-family-base: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+  --vp-font-family-mono: ui-monospace, "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
 
   --vp-c-brand-1: #7ebab5;
   --vp-c-brand-2: #6aa8a3;
