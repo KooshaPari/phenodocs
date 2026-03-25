@@ -4,10 +4,7 @@ import AuditTimeline from './components/AuditTimeline.vue'
 import BackToTop from './components/BackToTop.vue'
 import Callout from './components/Callout.vue'
 import CategorySwitcher from './components/CategorySwitcher.vue'
-<<<<<<< HEAD
-=======
 import CommitLog from './components/CommitLog.vue'
->>>>>>> upstream/main
 import ModuleSwitcher from './components/ModuleSwitcher.vue'
 import Breadcrumb from './components/Breadcrumb.vue'
 import CodeAnnotation from './components/CodeAnnotation.vue'
@@ -37,10 +34,7 @@ const theme: Theme = {
     app.component('ContentTabs', ContentTabs)
     app.component('DemoGif', DemoGif)
     app.component('CategorySwitcher', CategorySwitcher)
-<<<<<<< HEAD
-=======
     app.component('CommitLog', CommitLog)
->>>>>>> upstream/main
     app.component('Callout', Callout)
     app.component('DocStatusBadge', DocStatusBadge)
     app.component('ModuleSwitcher', ModuleSwitcher)
