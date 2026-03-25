@@ -1,0 +1,36 @@
+name: Publish @phenotype/docs
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/docs/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup .npmrc
+        run: |
+          echo "@phenotype:registry=https://npm.pkg.github.com" > ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Publish
+        run: |
+          cd packages/docs
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
