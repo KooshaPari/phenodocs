@@ -16,5 +16,9 @@
 
 ### Fixed
 
-- **CodeQL:** run `npm ci` + `npm run build` (same as deploy) so JavaScript/Vue under `.vitepress` is analyzed; autobuild alone did not extract VitePress sources.
+- **CI:** `workflow-permissions` workflow now defines a `jobs` block (GitHub Actions rejects workflows with no jobs); removed stray merge conflict markers from this file.
+- **CodeQL:** removed duplicate `setup-node` / `npm ci` steps in the analyze job.
+- **Deploy / quality:** Vue theme components and TS unused bindings fixed so `bun run check` passes in the Deploy Docs workflow.
+- **VitePress config:** duplicate `srcDir` key removed from `.vitepress/config.mts`.
+- **CodeQL (analysis):** `npm ci` installs deps so JS/TS under `.vitepress` is analyzed; autobuild alone did not extract VitePress sources.
 - Build failures from missing theme data JSON imports.
