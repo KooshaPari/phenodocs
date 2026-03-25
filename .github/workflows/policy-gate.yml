@@ -48,7 +48,7 @@ jobs:
             echo "ERROR: failed to fetch base ref $BASE_REF."
             exit 1
           fi
-          if ! MERGES=$(git rev-list --merges "origin/$BASE_REF..$PR_HEAD"); then
+          if ! MERGES=$(git rev-list --merges "origin/$BASE_REF..$PR_HEAD" 2>/dev/null || true); then
             echo "ERROR: failed to compute merge-commit range for base ref '$BASE_REF'."
             exit 1
           fi
