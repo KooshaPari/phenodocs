@@ -5,3 +5,10 @@ permissions:
   pull-requests: write
   statuses: write
   security-events: write
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: OK
+        run: echo "workflow permissions baseline"
