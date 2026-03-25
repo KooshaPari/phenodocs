@@ -93,7 +93,7 @@ watch(() => route.path, () => {
   loadPersistedTab()
 })
 
-function handleKeydown(event: KeyboardEvent, tabId: string) {
+function handleKeydown(event: KeyboardEvent, _tabId: string) {
   if (tabs.value.length <= 1) return
 
   const currentIndex = tabs.value.findIndex(t => t.id === activeTabId.value)

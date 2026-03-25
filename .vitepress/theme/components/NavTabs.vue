@@ -24,7 +24,7 @@ const activeIndex = computed(() => {
   })
 })
 
-function isActive(tab: Tab, index: number): boolean {
+function isActive(_tab: Tab, index: number): boolean {
   return activeIndex.value === index
 }
 
