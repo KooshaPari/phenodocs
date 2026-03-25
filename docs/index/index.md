@@ -10,3 +10,5 @@ Index buckets:
 - [Research](./research)
 - [Worklogs](./worklogs)
 - [Other](./other)
+
+Rich **workspace views** (changelog, commit log, WBS hub): [Workspace views](/views/).

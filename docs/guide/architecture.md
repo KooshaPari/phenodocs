@@ -4,14 +4,14 @@ Understanding how PhenoDocs works under the hood.
 
 ## System Overview
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                        PhenoDocs Hub                             │
 ├─────────────────────────────────────────────────────────────────┤
 │  .vitepress/          # VitePress config & theme                │
 │  docs/               # Hub-specific docs                         │
 │  projects/           # Aggregated project docs (submodules)     │
-│  package.json        # npm dependencies                         │
+│  package.json        # Bun / VitePress dependencies               │
 └─────────────────────────────────────────────────────────────────┘
          │
          ▼
@@ -56,7 +56,7 @@ gen = HubGenerator(
 gen.generate()
 ```
 
-### What it generates:
+### What it generates
 
 1. **index.md** — Landing page with project links
 2. **.vitepress/config.ts** — Navigation from project map
@@ -67,7 +67,8 @@ gen.generate()
 ### 1. Project Documents Created
 
 Agent or human creates docs in source project:
-```
+
+```text
 thegent/docs/ideas/2026-02-24-new-feature.md
 ```
 
@@ -89,7 +90,7 @@ docs hub --hub-dir ../phenodocs
 ### 4. VitePress Build
 
 ```bash
-npm run build
+bun run build
 # Output: .vitepress/dist
 ```
 
@@ -125,10 +126,13 @@ author: agent | human
 ## Search & Indexing
 
 ### Human Search
+
 VitePress built-in search (Algolia or local)
 
 ### AI Search
+
 `.llms.txt` generation for each doc:
+
 ```bash
 python scripts/generate-llms-docs.py
 ```
@@ -138,21 +142,23 @@ Output: `.llms/docs/filename.llms.txt`
 ## Deployment
 
 ### Static Export
+
 ```bash
-npm run build
+bun run build
 # Deploy .vitepress/dist to any static host
 ```
 
 ### Docker
+
 ```dockerfile
-FROM node:20-alpine
+FROM oven/bun:1-alpine
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 COPY . .
-RUN npm run build
+RUN bun run build
 EXPOSE 4173
-CMD ["npm", "run", "preview"]
+CMD ["bun", "run", "preview"]
 ```
 
 ## Performance Considerations
