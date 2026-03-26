@@ -21,6 +21,7 @@ import StickySidebar from './components/StickySidebar.vue'
 import Toast from './components/Toast.vue'
 import ToastContainer from './components/ToastContainer.vue'
 import Tooltip from './components/Tooltip.vue'
+import EcosystemHub from './components/EcosystemHub.vue'
 import './custom.css'
 
 const theme: Theme = {
@@ -47,6 +48,7 @@ const theme: Theme = {
     app.component('Toast', Toast)
     app.component('ToastContainer', ToastContainer)
     app.component('Tooltip', Tooltip)
+    app.component('EcosystemHub', EcosystemHub)
   },
   Layout: DefaultTheme.Layout,
 }
