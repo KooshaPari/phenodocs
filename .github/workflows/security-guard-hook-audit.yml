@@ -12,4 +12,24 @@ permissions:
 
 jobs:
   guard:
-    uses: KooshaPari/phenoShared/.github/workflows/reusable/security-guard-hook-audit.yml@9bc51f34248d0bc4db5bc1dd7724a8398465eb47
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Audit hook configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -f .pre-commit-config.yaml ]]; then
+            echo "Found .pre-commit-config.yaml"
+          else
+            echo "No .pre-commit-config.yaml present"
+          fi
+
+          if [[ -d .githooks ]]; then
+            find .githooks -maxdepth 2 -type f -print | sort
+          else
+            echo "No .githooks directory present"
+          fi

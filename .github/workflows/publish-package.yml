@@ -24,10 +24,12 @@ jobs:
         run: bun install
 
       - name: Publish to GitHub Packages
-        run: |
-          cd packages/docs
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
-          echo "@phenotype:registry=https://npm.pkg.github.com" >> .npmrc
-          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd packages/docs
+          {
+            echo "@phenotype:registry=https://npm.pkg.github.com"
+            echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}"
+          } > "$RUNNER_TEMP/npmrc"
+          npm publish --registry=https://npm.pkg.github.com --userconfig="$RUNNER_TEMP/npmrc"
