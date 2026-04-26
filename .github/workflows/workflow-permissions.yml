@@ -6,9 +6,6 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
-  statuses: write
-  security-events: write
 
 jobs:
   verify-permissions:
