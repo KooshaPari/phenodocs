@@ -11,7 +11,6 @@ export default createPhenotypeConfig({
   lang: 'en-US',
   srcDir: 'docs',
   base: docsBase,
-  srcDir: 'docs',
   githubOrg: 'KooshaPari',
   githubRepo: repoName,
 
