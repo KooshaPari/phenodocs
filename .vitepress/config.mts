@@ -1,4 +1,4 @@
-import { createPhenotypeConfig } from '@phenotype/docs/config'
+import { createPhenotypeConfig } from '../packages/docs/src/config/index.ts'
 
 // Environment-based configuration for GitHub Pages compatibility
 const isPagesBuild = process.env.GITHUB_ACTIONS === 'true' || process.env.GITHUB_PAGES === 'true'
@@ -11,7 +11,6 @@ export default createPhenotypeConfig({
   lang: 'en-US',
   srcDir: 'docs',
   base: docsBase,
-  srcDir: 'docs',
   githubOrg: 'KooshaPari',
   githubRepo: repoName,
 
