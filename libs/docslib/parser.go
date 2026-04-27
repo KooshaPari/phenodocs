@@ -1,6 +1,7 @@
 package docslib
 
 import (
+	"os"
 	"strings"
 )
 
@@ -51,7 +52,10 @@ func (p *MarkdownParser) parseNodes(lines []string) []Node {
 func extractTitle(lines []string) string {
 	for _, line := range lines {
 		if strings.HasPrefix(line, "# ") {
-			return strings.TrimSpace(line[2:])
+			title := strings.TrimSpace(line[2:])
+			if title != "" {
+				return title
+			}
 		}
 	}
 	return "Untitled"
@@ -79,5 +83,9 @@ func (p *MarkdownParser) ParseFile(path string) (*Doc, error) {
 
 // ReadFile reads a file
 func ReadFile(path string) (string, error) {
-	return os.ReadFile(path)
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return "", err
+	}
+	return string(content), nil
 }

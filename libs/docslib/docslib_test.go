@@ -23,8 +23,8 @@ More content.
 		t.Errorf("Title = %q, want %q", doc.Title, "Title")
 	}
 
-	if len(doc.Content) != 3 {
-		t.Errorf("Content length = %d, want 3", len(doc.Content))
+	if len(doc.Content) != 4 {
+		t.Errorf("Content length = %d, want 4", len(doc.Content))
 	}
 }
 
