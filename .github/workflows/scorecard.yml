@@ -5,6 +5,7 @@ on:
     - cron: '17 3 * * 6'
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions: read-all
 
@@ -17,6 +18,8 @@ jobs:
       id-token: write
       contents: read
       actions: read
+      checks: read
+      pull-requests: read
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
