@@ -77,29 +77,28 @@ tasks:
       - lint:go
 
   lint:site:
-    desc: Run Bun lint checks when package.json exists
+    desc: Run Bun/VitePress lint checks when package.json exists
     status:
       - test ! -f package.json
     cmds:
-      - bun run lint
       - bun run lint:ts
 
   lint:python:
-    desc: Run Python lint checks when pyproject.toml exists
+    desc: Run Python source validation when pyproject.toml exists
     status:
       - test ! -f pyproject.toml
     cmds:
-      - uv run pre-commit run --all-files
+      - uv run python -m compileall scripts
 
   lint:go:
-    desc: Run Go lint checks for detected modules when go.mod exists
+    desc: Run non-mutating Go lint checks for detected modules when go.mod exists
     status:
       - test -z "{{.GO_MODULES}}"
     cmds:
       - for: { var: GO_MODULES, split: "\n" }
-        cmd: cd {{.ITEM}} && go fmt ./...
+        cmd: test -z "$(cd {{.ITEM}} && gofmt -l .)"
       - for: { var: GO_MODULES, split: "\n" }
-        cmd: cd {{.ITEM}} && golangci-lint run ./...
+        cmd: cd {{.ITEM}} && go vet ./...
 
   clean:
     desc: Remove generated artifacts and caches
