@@ -16,4 +16,4 @@ Project worklogs capturing research, decisions, architecture, and completion not
 
 ## Index
 
-See `../../INDEX.md` for cross-repo worklog index.
+Use [README.md](../README.md) for the project overview and [docs/index.md](../docs/index.md) for the published docs hub.
