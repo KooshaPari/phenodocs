@@ -3,6 +3,7 @@ version: "3"
 vars:
   GO_MODULES:
     sh: find . \( -path './.git' -o -path './node_modules' -o -path './packages/*/node_modules' -o -path './.venv' \) -prune -o -name go.mod -print | sed 's#/go.mod$##' | sort
+  GO_TASK_ENV: GOCACHE="{{.TASKFILE_DIR}}/.task/cache/go-build" GOTMPDIR="{{.TASKFILE_DIR}}/.task/tmp/go"
 
 tasks:
   default:
@@ -22,6 +23,7 @@ tasks:
     status:
       - test ! -f package.json
     cmds:
+      - bun install --frozen-lockfile
       - bun run build
 
   build:python:
@@ -36,8 +38,9 @@ tasks:
     status:
       - test -z "{{.GO_MODULES}}"
     cmds:
+      - mkdir -p .task/cache/go-build .task/tmp/go
       - for: { var: GO_MODULES, split: "\n" }
-        cmd: cd {{.ITEM}} && go build ./...
+        cmd: cd {{.ITEM}} && {{.GO_TASK_ENV}} go build ./...
 
   test:
     desc: Run repo verification for detected stacks
@@ -51,8 +54,8 @@ tasks:
     status:
       - test ! -f package.json
     cmds:
-      - bun run lint:ts
-      - bun run typecheck
+      - bun install --frozen-lockfile
+      - bun run check
 
   test:python:
     desc: Run Python verification when pyproject.toml exists
@@ -66,8 +69,9 @@ tasks:
     status:
       - test -z "{{.GO_MODULES}}"
     cmds:
+      - mkdir -p .task/cache/go-build .task/tmp/go
       - for: { var: GO_MODULES, split: "\n" }
-        cmd: cd {{.ITEM}} && go test ./...
+        cmd: cd {{.ITEM}} && {{.GO_TASK_ENV}} go test ./...
 
   lint:
     desc: Run lint checks for detected stacks
@@ -77,10 +81,11 @@ tasks:
       - lint:go
 
   lint:site:
-    desc: Run Bun/VitePress lint checks when package.json exists
+    desc: Run TypeScript lint checks when package.json exists
     status:
       - test ! -f package.json
     cmds:
+      - bun install --frozen-lockfile
       - bun run lint:ts
 
   lint:python:
@@ -95,10 +100,11 @@ tasks:
     status:
       - test -z "{{.GO_MODULES}}"
     cmds:
+      - mkdir -p .task/cache/go-build .task/tmp/go
       - for: { var: GO_MODULES, split: "\n" }
         cmd: test -z "$(cd {{.ITEM}} && gofmt -l .)"
       - for: { var: GO_MODULES, split: "\n" }
-        cmd: cd {{.ITEM}} && go vet ./...
+        cmd: cd {{.ITEM}} && {{.GO_TASK_ENV}} go vet ./...
 
   clean:
     desc: Remove generated artifacts and caches
@@ -128,3 +134,4 @@ tasks:
     cmds:
       - for: { var: GO_MODULES, split: "\n" }
         cmd: cd {{.ITEM}} && go clean -testcache
+      - rm -rf .task
