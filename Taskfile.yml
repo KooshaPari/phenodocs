@@ -13,6 +13,7 @@ tasks:
 
   build:
     desc: Build detected project stacks
+    summary: Builds the detected Bun/VitePress, Python, and Go surfaces.
     deps:
       - build:site
       - build:python
@@ -44,6 +45,7 @@ tasks:
 
   test:
     desc: Run repo verification for detected stacks
+    summary: Tests the detected Bun/VitePress, Python, and Go surfaces.
     deps:
       - test:site
       - test:python
@@ -75,6 +77,7 @@ tasks:
 
   lint:
     desc: Run lint checks for detected stacks
+    summary: Runs non-mutating lint and source checks for detected stacks.
     deps:
       - lint:site
       - lint:python
@@ -108,6 +111,7 @@ tasks:
 
   clean:
     desc: Remove generated artifacts and caches
+    summary: Removes generated artifacts and caches for detected stacks.
     cmds:
       - task clean:site
       - task clean:python
