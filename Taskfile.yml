@@ -94,10 +94,10 @@ tasks:
 
   clean:
     desc: Remove generated artifacts and caches
-    deps:
-      - clean:site
-      - clean:python
-      - clean:go
+    cmds:
+      - task clean:site
+      - task clean:python
+      - task clean:go
 
   clean:site:
     desc: Remove Bun/VitePress build artifacts when package.json exists
