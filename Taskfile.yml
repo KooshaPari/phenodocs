@@ -1,5 +1,9 @@
 version: "3"
 
+vars:
+  GO_MODULES:
+    sh: find . \( -path './.git' -o -path './node_modules' -o -path './packages/*/node_modules' -o -path './.venv' \) -prune -o -name go.mod -print | sed 's#/go.mod$##' | sort
+
 tasks:
   default:
     desc: List available tasks
@@ -28,11 +32,12 @@ tasks:
       - uv run python -m compileall scripts
 
   build:go:
-    desc: Build Go modules when go.mod exists
+    desc: Build detected Go modules when go.mod exists
     status:
-      - test ! -f libs/docslib/go.mod
+      - test -z "{{.GO_MODULES}}"
     cmds:
-      - cd libs/docslib && go build ./...
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && go build ./...
 
   test:
     desc: Run repo verification for detected stacks
@@ -56,11 +61,12 @@ tasks:
       - uv run python scripts/check_docs_links.py
 
   test:go:
-    desc: Run Go tests when go.mod exists
+    desc: Run Go tests for detected modules when go.mod exists
     status:
-      - test ! -f libs/docslib/go.mod
+      - test -z "{{.GO_MODULES}}"
     cmds:
-      - cd libs/docslib && go test ./...
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && go test ./...
 
   lint:
     desc: Run lint checks for detected stacks
@@ -85,12 +91,14 @@ tasks:
       - uv run pre-commit run --all-files
 
   lint:go:
-    desc: Run Go lint checks when go.mod exists
+    desc: Run Go lint checks for detected modules when go.mod exists
     status:
-      - test ! -f libs/docslib/go.mod
+      - test -z "{{.GO_MODULES}}"
     cmds:
-      - cd libs/docslib && go fmt ./...
-      - cd libs/docslib && golangci-lint run ./...
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && go fmt ./...
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && golangci-lint run ./...
 
   clean:
     desc: Remove generated artifacts and caches
@@ -104,7 +112,7 @@ tasks:
     status:
       - test ! -f package.json
     cmds:
-      - rm -rf .vitepress/dist .vitepress/.temp .vitepress/cache
+      - rm -rf .vitepress/dist .vitepress/.temp .vitepress/cache docs/.vitepress/dist docs/.vitepress/.temp docs/.vitepress/cache
 
   clean:python:
     desc: Remove Python caches when pyproject.toml exists
@@ -114,8 +122,9 @@ tasks:
       - find . -type d \( -name __pycache__ -o -name .pytest_cache -o -name .mypy_cache -o -name .ruff_cache \) -prune -exec rm -rf {} +
 
   clean:go:
-    desc: Remove Go test caches when go.mod exists
+    desc: Remove Go test caches for detected modules when go.mod exists
     status:
-      - test ! -f libs/docslib/go.mod
+      - test -z "{{.GO_MODULES}}"
     cmds:
-      - cd libs/docslib && go clean -testcache
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && go clean -testcache
