@@ -11,6 +11,7 @@ tasks:
     deps:
       - build:site
       - build:python
+      - build:go
 
   build:site:
     desc: Build the Bun/VitePress site when package.json exists
@@ -26,11 +27,19 @@ tasks:
     cmds:
       - uv run python -m compileall scripts
 
+  build:go:
+    desc: Build Go modules when go.mod exists
+    status:
+      - test ! -f libs/docslib/go.mod
+    cmds:
+      - cd libs/docslib && go build ./...
+
   test:
     desc: Run repo verification for detected stacks
     deps:
       - test:site
       - test:python
+      - test:go
 
   test:site:
     desc: Run Bun verification when package.json exists
@@ -46,11 +55,19 @@ tasks:
     cmds:
       - uv run python scripts/check_docs_links.py
 
+  test:go:
+    desc: Run Go tests when go.mod exists
+    status:
+      - test ! -f libs/docslib/go.mod
+    cmds:
+      - cd libs/docslib && go test ./...
+
   lint:
     desc: Run lint checks for detected stacks
     deps:
       - lint:site
       - lint:python
+      - lint:go
 
   lint:site:
     desc: Run Bun lint checks when package.json exists
@@ -67,11 +84,20 @@ tasks:
     cmds:
       - uv run pre-commit run --all-files
 
+  lint:go:
+    desc: Run Go lint checks when go.mod exists
+    status:
+      - test ! -f libs/docslib/go.mod
+    cmds:
+      - cd libs/docslib && go fmt ./...
+      - cd libs/docslib && golangci-lint run ./...
+
   clean:
     desc: Remove generated artifacts and caches
     deps:
       - clean:site
       - clean:python
+      - clean:go
 
   clean:site:
     desc: Remove Bun/VitePress build artifacts when package.json exists
@@ -86,3 +112,10 @@ tasks:
       - test ! -f pyproject.toml
     cmds:
       - find . -type d \( -name __pycache__ -o -name .pytest_cache -o -name .mypy_cache -o -name .ruff_cache \) -prune -exec rm -rf {} +
+
+  clean:go:
+    desc: Remove Go test caches when go.mod exists
+    status:
+      - test ! -f libs/docslib/go.mod
+    cmds:
+      - cd libs/docslib && go clean -testcache
