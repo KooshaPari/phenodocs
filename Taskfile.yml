@@ -1,0 +1,74 @@
+version: "3"
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  build:
+    desc: Build detected project stacks
+    deps:
+      - build:site
+      - build:python
+
+  build:site:
+    desc: Build the Bun/VitePress site when package.json exists
+    status:
+      - test ! -f package.json
+    cmds:
+      - bun run build
+
+  build:python:
+    desc: Run Python build-time validation when pyproject.toml exists
+    status:
+      - test ! -f pyproject.toml
+    cmds:
+      - uv run python -m compileall scripts
+
+  test:
+    desc: Run repo verification for detected stacks
+    deps:
+      - test:site
+      - test:python
+
+  test:site:
+    desc: Run Bun verification when package.json exists
+    status:
+      - test ! -f package.json
+    cmds:
+      - bun run check
+
+  test:python:
+    desc: Run Python verification when pyproject.toml exists
+    status:
+      - test ! -f pyproject.toml
+    cmds:
+      - uv run python scripts/check_docs_links.py
+
+  lint:
+    desc: Run lint checks for detected stacks
+    deps:
+      - lint:site
+      - lint:python
+
+  lint:site:
+    desc: Run Bun lint checks when package.json exists
+    status:
+      - test ! -f package.json
+    cmds:
+      - bun run lint
+      - bun run lint:ts
+
+  lint:python:
+    desc: Run Python lint checks when pyproject.toml exists
+    status:
+      - test ! -f pyproject.toml
+    cmds:
+      - uv run pre-commit run --all-files
+
+  clean:
+    desc: Remove generated artifacts and caches
+    cmds:
+      - rm -rf .vitepress/dist .vitepress/.temp .vitepress/cache
+      - find . -type d \( -name __pycache__ -o -name .pytest_cache -o -name .mypy_cache -o -name .ruff_cache \) -prune -exec rm -rf {} +
