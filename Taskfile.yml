@@ -69,6 +69,20 @@ tasks:
 
   clean:
     desc: Remove generated artifacts and caches
+    deps:
+      - clean:site
+      - clean:python
+
+  clean:site:
+    desc: Remove Bun/VitePress build artifacts when package.json exists
+    status:
+      - test ! -f package.json
     cmds:
       - rm -rf .vitepress/dist .vitepress/.temp .vitepress/cache
+
+  clean:python:
+    desc: Remove Python caches when pyproject.toml exists
+    status:
+      - test ! -f pyproject.toml
+    cmds:
       - find . -type d \( -name __pycache__ -o -name .pytest_cache -o -name .mypy_cache -o -name .ruff_cache \) -prune -exec rm -rf {} +
