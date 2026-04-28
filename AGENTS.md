@@ -1,25 +1,21 @@
-# Agent Rules
+# AGENTS.md — phenodocs
 
-**This project is managed through AgilePlus.**
+This repository is part of the Phenotype ecosystem.
 
-## AgilePlus Mandate
+## Quick Links
 
-All work MUST be tracked in AgilePlus:
-- Reference: `/Users/kooshapari/CodeProjects/Phenotype/repos/AgilePlus`
-- CLI: `cd /Users/kooshapari/CodeProjects/Phenotype/repos/AgilePlus && agileplus <command>`
+- **Project governance:** See `CLAUDE.md` in this repository
+- **Phenotype org guidance:** `/repos/CLAUDE.md`
+- **Global agent instructions:** `~/.claude/AGENTS.md`
+- **Work tracking:** AgilePlus at `/repos/AgilePlus`
 
-## Work Requirements
+## Operating Model
 
-1. **Check for AgilePlus spec before implementing**
-2. **Create spec for new work**: `agileplus specify --title "<feature>" --description "<desc>"`
-3. **Update work package status**: `agileplus status <feature-id> --wp <wp-id> --state <state>`
-4. **No code without corresponding AgilePlus spec**
-
-## Branch Discipline
-
-- Feature branches in `repos/worktrees/<project>/<category>/<branch>`
-- Canonical repository tracks `main` only
-- Return to `main` for merge/integration checkpoints
+1. Before implementing: Check AgilePlus for existing specs
+2. Quality gates: See `CLAUDE.md` for build/test/lint commands
+3. Worktrees: Use `repos/phenodocs-wtrees/<topic>/` for features
+4. Integration: Commit to `main` after gates pass
 
 ---
 
+**Parent contract:** See `CLAUDE.md` and `/repos/AGENTS.md` for complete governance.
