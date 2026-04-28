@@ -47,11 +47,12 @@ tasks:
       - test:go
 
   test:site:
-    desc: Run Bun verification when package.json exists
+    desc: Run Bun/VitePress verification when package.json exists
     status:
       - test ! -f package.json
     cmds:
-      - bun run check
+      - bun run lint:ts
+      - bun run typecheck
 
   test:python:
     desc: Run Python verification when pyproject.toml exists
