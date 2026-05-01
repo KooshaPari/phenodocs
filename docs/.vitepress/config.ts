@@ -26,6 +26,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Governance', link: '/governance/overview' },
       { text: 'Wiki', link: '/wiki/' },
       { text: 'Development Guide', link: '/development/' },
       { text: 'Document Index', link: '/index/' },
@@ -33,6 +34,12 @@ export default defineConfig({
       { text: 'Roadmap', link: '/roadmap/' }
     ],
     sidebar: {
+      '/governance/': [
+        { text: 'Governance', items: [
+          { text: 'Overview', link: '/governance/overview' },
+          { text: 'Journey Traceability', link: '/governance/journeys' }
+        ]}
+      ],
       '/wiki/': [
         { text: 'Wiki (User Guides)', items: [
           { text: 'Overview', link: '/wiki/' }
@@ -66,6 +73,7 @@ export default defineConfig({
       ],
       '/': [
         { text: 'Quick Links', items: [
+          { text: 'Governance', link: '/governance/overview' },
           { text: 'Wiki', link: '/wiki/' },
           { text: 'Development Guide', link: '/development/' },
           { text: 'Document Index', link: '/index/' },
