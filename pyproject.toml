@@ -4,10 +4,19 @@ version = "0.1.0"
 description = "Tooling and scripts for the PhenoDocs VitePress hub (uv + CPython 3.14+)."
 requires-python = ">=3.14"
 readme = "README.md"
-dependencies = []
+dependencies = ["httpx>=0.28.0"]
 
 [dependency-groups]
-dev = ["pre-commit>=4.0.0"]
+dev = [
+    "pre-commit>=4.0.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
 
 [tool.uv]
 package = false
