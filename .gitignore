@@ -53,3 +53,7 @@ npm-debug.log*
 .github/copilot-instructions.md
 .claudeignore
 .llmignore
+
+# Integration test artifacts
+libs/docslib/docslib_integration_test.go
+tests/
