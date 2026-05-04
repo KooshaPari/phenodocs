@@ -1,9 +1,24 @@
+// Edited 2026-05-04 (frontend-engineer task):
+//   Fix shared VitePress asset 404s on GitHub Pages.
+//   Changes:
+//     1. `themeConfig.logo` left as '/logo.svg' — VitePress automatically
+//        prefixes themeConfig.logo with `base`, so DO NOT prepend `${base}`
+//        manually (would produce `/phenodocs/phenodocs/logo.svg`).
+//     2. Favicon is now wired via `createPhenotypeConfig`'s shared `head[]`
+//        which prepends the normalized `base` for non-auto-prefixed entries.
+//        Static assets (favicon.svg, logo.svg) live in `docs/public/` because
+//        VitePress resolves `public/` relative to `srcDir: 'docs'`.
+//     3. `docsBase` is normalized to always end with `/` — required by
+//        VitePress for correct asset URL composition under GitHub Pages.
 import { createPhenotypeConfig } from '../packages/docs/src/config/index.ts'
 
-// Environment-based configuration for GitHub Pages compatibility
+// Environment-based configuration for GitHub Pages compatibility.
+// On Pages, repo lives at `/<repo>/`; locally and on a custom domain root, `/`.
 const isPagesBuild = process.env.GITHUB_ACTIONS === 'true' || process.env.GITHUB_PAGES === 'true'
 const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'phenodocs'
-const docsBase = isPagesBuild ? `/${repoName}/` : '/'
+const rawBase = isPagesBuild ? `/${repoName}/` : '/'
+// Defensive: ensure leading + trailing slash even if repoName was malformed.
+const docsBase = (rawBase.startsWith('/') ? rawBase : `/${rawBase}`).replace(/\/+$/, '/') || '/'
 
 export default createPhenotypeConfig({
   title: 'PhenoDocs',

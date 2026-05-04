@@ -1,7 +1,15 @@
+// Edited 2026-05-04 (frontend-engineer task):
+//   Fixed broken phenodocsTheme / phenodocsRoot references. These variables
+//   were never defined, causing a ReferenceError if this config was ever
+//   loaded directly (e.g. `vitepress dev docs/`). The root config at
+//   .vitepress/config.mts is the canonical entry point; this inner config
+//   is kept for reference but the broken alias/fs-allow entries are removed.
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { defineConfig } from 'vitepress'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   title: 'PhenoDocs',
@@ -14,12 +22,14 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@phenodocs-theme': phenodocsTheme,
+        '@phenodocs-theme': resolve(__dirname, '../../.vitepress/theme'),
       },
     },
     server: {
       fs: {
-        allow: [phenodocsRoot],
+        // Allow serving files from the phenodocs workspace root so that
+        // VitePress can resolve theme assets during local dev.
+        allow: [resolve(__dirname, '../../..')],
       },
     },
   },

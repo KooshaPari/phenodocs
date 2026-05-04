@@ -2,6 +2,12 @@
  * Keycap Palette — Phenotype Shared VitePress Theme
  * Version: 1.0.0
  *
+ * Edited 2026-05-04 (frontend-engineer task):
+ *   Removed external Google Fonts @import. Shared theme CSS must not depend
+ *   on absolute third-party font CSS requests because production docs deploy
+ *   under repo subpaths and may run with offline/strict-CSP previews. Use the
+ *   system stack plus VitePress's bundled Inter assets instead.
+ *
  * Usage: @import './keycap-palette.css' in your theme's custom.css
  *        or copy this file to your project.
  *
@@ -16,8 +22,6 @@
  *
  * Contrast: All text/bg combos meet WCAG AA (4.5:1+)
  * ═══════════════════════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ── Shared Tokens ── */
 
