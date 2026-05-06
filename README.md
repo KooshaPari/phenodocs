@@ -10,6 +10,7 @@
 [![VitePress](https://img.shields.io/badge/VitePress-1.x-green.svg)](https://vitepress.dev/)
 [![Deploy](https://github.com/kooshapari/phenodocs/actions/workflows/deploy.yml/badge.svg)](https://github.com/kooshapari/phenodocs/actions/workflows/deploy.yml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Ready-green)](https://kooshapari.github.io/phenodocs/)
+[![AI Slop Inside](https://sladge.net/badge.svg)](https://sladge.net)
 
 **Live Demo**: https://kooshapari.github.io/phenodocs/
 
