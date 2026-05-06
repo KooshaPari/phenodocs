@@ -19,3 +19,8 @@ repos:
         language: script
         pass_filenames: false
         stages: [pre-commit, pre-push]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.14.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-all]
