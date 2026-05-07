@@ -9,9 +9,24 @@
     "noUnusedParameters": true,
     "noImplicitOverride": true,
     "skipLibCheck": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["vitepress/client"]
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "vitepress/client"
+    ],
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true
   },
-  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue"],
-  "exclude": ["node_modules", ".vitepress/dist"]
+  "include": [
+    ".vitepress/**/*.ts",
+    ".vitepress/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    ".vitepress/dist"
+  ]
 }
