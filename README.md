@@ -190,6 +190,10 @@ bun run build
 bun run preview
 ```
 
+## Testing
+
+This repository contains only documentation and build tooling (VitePress/Bun + minimal Python stubs). There is no Python test suite — the `pyproject.toml` is present only to satisfy the uv/CPython 3.14+ toolchain requirement, and the single stub script in `scripts/` is not covered by automated tests.
+
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.

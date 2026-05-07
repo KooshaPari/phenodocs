@@ -272,13 +272,13 @@ The `.llms.txt` file (proposed by Anthropic, adopted by Vercel, Stripe, and othe
 
 ## Docs
 
-- [Getting Started](https://phenotype.dev/docs/getting-started): Installation and first steps
-- [Architecture](https://phenotype.dev/docs/architecture): System design and principles
+- [Getting Started](https://kooshapari.com/docs/getting-started): Installation and first steps
+- [Architecture](https://kooshapari.com/docs/architecture): System design and principles
 
 ## Optional
 
-- [API Reference](https://phenotype.dev/reference/api): Complete API documentation
-- [ADRs](https://phenotype.dev/planning/adrs): Architecture decision records
+- [API Reference](https://kooshapari.com/reference/api): Complete API documentation
+- [ADRs](https://kooshapari.com/planning/adrs): Architecture decision records
 ```
 
 Benefits:

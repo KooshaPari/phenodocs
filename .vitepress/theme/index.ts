@@ -22,7 +22,7 @@ import Toast from './components/Toast.vue'
 import ToastContainer from './components/ToastContainer.vue'
 import Tooltip from './components/Tooltip.vue'
 import EcosystemHub from './components/EcosystemHub.vue'
-import './custom.css'
+import './style.css'
 
 const theme: Theme = {
   ...DefaultTheme,
