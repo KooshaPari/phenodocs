@@ -1,0 +1,141 @@
+version: "3"
+
+vars:
+  GO_MODULES:
+    sh: find . \( -path './.git' -o -path './node_modules' -o -path './packages/*/node_modules' -o -path './.venv' \) -prune -o -name go.mod -print | sed 's#/go.mod$##' | sort
+  GO_TASK_ENV: GOCACHE="{{.TASKFILE_DIR}}/.task/cache/go-build" GOTMPDIR="{{.TASKFILE_DIR}}/.task/tmp/go"
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  build:
+    desc: Build detected project stacks
+    summary: Builds the detected Bun/VitePress, Python, and Go surfaces.
+    deps:
+      - build:site
+      - build:python
+      - build:go
+
+  build:site:
+    desc: Build the Bun/VitePress site when package.json exists
+    status:
+      - test ! -f package.json
+    cmds:
+      - bun install --frozen-lockfile
+      - bun run build
+
+  build:python:
+    desc: Run Python build-time validation when pyproject.toml exists
+    status:
+      - test ! -f pyproject.toml
+    cmds:
+      - uv run python -m compileall scripts
+
+  build:go:
+    desc: Build detected Go modules when go.mod exists
+    status:
+      - test -z "{{.GO_MODULES}}"
+    cmds:
+      - mkdir -p .task/cache/go-build .task/tmp/go
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && {{.GO_TASK_ENV}} go build ./...
+
+  test:
+    desc: Run repo verification for detected stacks
+    summary: Tests the detected Bun/VitePress, Python, and Go surfaces.
+    deps:
+      - test:site
+      - test:python
+      - test:go
+
+  test:site:
+    desc: Run Bun/VitePress verification when package.json exists
+    status:
+      - test ! -f package.json
+    cmds:
+      - bun install --frozen-lockfile
+      - bun run check
+
+  test:python:
+    desc: Run Python verification when pyproject.toml exists
+    status:
+      - test ! -f pyproject.toml
+    cmds:
+      - uv run python scripts/check_docs_links.py
+
+  test:go:
+    desc: Run Go tests for detected modules when go.mod exists
+    status:
+      - test -z "{{.GO_MODULES}}"
+    cmds:
+      - mkdir -p .task/cache/go-build .task/tmp/go
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && {{.GO_TASK_ENV}} go test ./...
+
+  lint:
+    desc: Run lint checks for detected stacks
+    summary: Runs non-mutating lint and source checks for detected stacks.
+    deps:
+      - lint:site
+      - lint:python
+      - lint:go
+
+  lint:site:
+    desc: Run TypeScript lint checks when package.json exists
+    status:
+      - test ! -f package.json
+    cmds:
+      - bun install --frozen-lockfile
+      - bun run lint:ts
+
+  lint:python:
+    desc: Run Python source validation when pyproject.toml exists
+    status:
+      - test ! -f pyproject.toml
+    cmds:
+      - uv run python -m compileall scripts
+
+  lint:go:
+    desc: Run non-mutating Go lint checks for detected modules when go.mod exists
+    status:
+      - test -z "{{.GO_MODULES}}"
+    cmds:
+      - mkdir -p .task/cache/go-build .task/tmp/go
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: test -z "$(cd {{.ITEM}} && gofmt -l .)"
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && {{.GO_TASK_ENV}} go vet ./...
+
+  clean:
+    desc: Remove generated artifacts and caches
+    summary: Removes generated artifacts and caches for detected stacks.
+    cmds:
+      - task clean:site
+      - task clean:python
+      - task clean:go
+
+  clean:site:
+    desc: Remove Bun/VitePress build artifacts when package.json exists
+    status:
+      - test ! -f package.json
+    cmds:
+      - rm -rf .vitepress/dist .vitepress/.temp .vitepress/cache docs/.vitepress/dist docs/.vitepress/.temp docs/.vitepress/cache
+
+  clean:python:
+    desc: Remove Python caches when pyproject.toml exists
+    status:
+      - test ! -f pyproject.toml
+    cmds:
+      - find . -type d \( -name __pycache__ -o -name .pytest_cache -o -name .mypy_cache -o -name .ruff_cache \) -prune -exec rm -rf {} +
+
+  clean:go:
+    desc: Remove Go test caches for detected modules when go.mod exists
+    status:
+      - test -z "{{.GO_MODULES}}"
+    cmds:
+      - for: { var: GO_MODULES, split: "\n" }
+        cmd: cd {{.ITEM}} && go clean -testcache
+      - rm -rf .task

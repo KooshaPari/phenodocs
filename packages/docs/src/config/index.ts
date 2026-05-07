@@ -1,3 +1,21 @@
+// Edited 2026-05-04 (frontend-engineer task):
+//   Fix shared VitePress asset handling so favicon/logo do not 404 on
+//   GitHub Pages deployments where `base` is `/<repo>/`.
+//   Changes:
+//     1. Normalize `base` to always end with `/` before composing asset URLs.
+//        VitePress requires the trailing slash; without it `${base}favicon.svg`
+//        becomes `/repofavicon.svg` and 404s.
+//     2. Switch favicon from `.ico` (which did not exist in any consumer's
+//        public/ tree) to `favicon.svg` — checked-in placeholders ship with
+//        phenodocs/docs/public/ because this site uses `srcDir: 'docs'`.
+//        Add an `apple-touch-icon` referencing the same.
+//     3. Drop the `.ico` reference entirely; SVG favicons are supported by all
+//        evergreen browsers VitePress targets.
+//     4. `themeConfig.logo` is left as a root-relative path ('/logo.svg');
+//        VitePress auto-prefixes `themeConfig.logo` with `base`, so consumers
+//        must NOT prepend `${base}` themselves (would double-prefix).
+//     5. `head` entries are NOT auto-prefixed by VitePress, so we DO prepend
+//        the normalized `base` for those.
 import { defineConfig } from 'vitepress'
 import type { ConfigOptions } from '../types/index.ts'
 import { deepMerge } from '../utils/config-merger.ts'
@@ -26,17 +44,25 @@ export function createPhenotypeConfig(options: ConfigOptions) {
 
   const repoSlug = githubRepo ?? title.toLowerCase().replace(/\s+/g, '-')
 
+  // Normalize base: VitePress requires leading + trailing slash. Without trailing
+  // slash, `${base}favicon.svg` produces a malformed URL (e.g. `/repofavicon.svg`).
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`
+
   const baseConfig = defineConfig({
     title,
     description,
     lang: 'en-US',
     srcDir,
-    base,
+    base: normalizedBase,
     lastUpdated: true,
     cleanUrls: true,
 
     head: [
-      ['link', { rel: 'icon', href: `${base}favicon.ico` }],
+      // SVG favicon. Phenodocs ships placeholder at `docs/public/favicon.svg`
+      // (VitePress resolves `public/` relative to `srcDir`, not repo root).
+      // Each consumer must ship its own under `<srcDir>/public/` to override.
+      ['link', { rel: 'icon', type: 'image/svg+xml', href: `${normalizedBase}favicon.svg` }],
+      ['link', { rel: 'apple-touch-icon', href: `${normalizedBase}favicon.svg` }],
     ],
 
     themeConfig: {

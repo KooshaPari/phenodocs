@@ -1,5 +1,7 @@
 # PhenoDocs
 
+**Status:** maintenance
+
 > VitePress Federation Hub — Aggregate documentation from multiple projects into a unified portal
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

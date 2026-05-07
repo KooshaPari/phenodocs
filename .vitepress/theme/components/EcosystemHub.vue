@@ -226,7 +226,10 @@ const categories = ['app', 'api', 'docs', 'lib'] as const
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+/* Edited 2026-05-04 (frontend-engineer task):
+   Removed external Google Fonts @import (Space Mono / DM Sans). Render-blocking
+   third-party CSS request 404s under strict CSP and offline previews. Use the
+   system mono / sans stack — visually equivalent for hub cards. */
 
 .hub {
   --teal: #7ebab5;

@@ -1,14 +1,19 @@
 /* ═══════════════════════════════════════════════════════════════
  * Keycap Palette - Phenotype Shared VitePress Theme
  *
+ * Edited 2026-05-04 (frontend-engineer task):
+ *   Removed external Google Fonts @import. VitePress already self-hosts
+ *   Inter via @fontsource and writes inter-roman-*.woff2 into dist/assets/
+ *   at build time. The previous @import caused render-blocking external
+ *   requests, would 404 under strict CSP, and broke offline previews.
+ *   Fonts now resolve via the system stack + VitePress's bundled Inter.
+ *
  * Accent:       #7ebab5 (teal)
  * Primary text: #f6f5f5 (warm white) / #1a1c1e (dark ink)
  * Dark BG:      #090a0c (deep midnight)
  * Light BG:     #f8f9fa (warm paper)
  * Secondary:    #353a40 (slate)
  * ═══════════════════════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;

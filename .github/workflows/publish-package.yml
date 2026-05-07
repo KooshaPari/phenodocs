@@ -1,4 +1,8 @@
 name: Publish @phenotype/docs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches: [main]
@@ -23,15 +27,15 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install
+        run: bun install --frozen-lockfile
 
       - name: Publish to GitHub Packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          cat > "$RUNNER_TEMP/bunfig.toml" <<'EOF'
+          [install.scopes]
+          "@phenotype" = { token = "$NODE_AUTH_TOKEN", url = "https://npm.pkg.github.com/" }
+          EOF
           cd packages/docs
-          {
-            echo "@phenotype:registry=https://npm.pkg.github.com"
-            echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}"
-          } > "$RUNNER_TEMP/npmrc"
-          npm publish --registry=https://npm.pkg.github.com --userconfig="$RUNNER_TEMP/npmrc"
+          bun --config "$RUNNER_TEMP/bunfig.toml" publish --tolerate-republish
