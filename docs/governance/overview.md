@@ -206,3 +206,11 @@ MAJOR.MINOR.PATCH
 - **Documentation Lead**: @doc-lead
 - **Emergency**: #docs-emergency (Slack)
 - **General**: #docs (Slack)
+
+---
+
+## Rich Media Stubs
+
+<!-- RICH-MEDIA-STUB type="annotated-screenshot" subject="Governance overview — stacked-PR channels and merge flow" journey="" status="TODO" -->
+> **[RICH MEDIA PLACEHOLDER]** *Annotated screenshot of the governance channel diagram.*
+<!-- END-RICH-MEDIA-STUB -->

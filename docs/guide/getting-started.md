@@ -115,3 +115,15 @@ Learn from past work.
 - Read the [Architecture Guide](/guide/architecture.md)
 - Explore the [API Reference](/reference/api.md)
 - Learn about [Governance](/governance/overview.md)
+
+---
+
+## Rich Media Stubs
+
+<!-- RICH-MEDIA-STUB type="annotated-screenshot" subject="PhenoDocs quickstart — dev server running with first project linked" journey="" status="TODO" -->
+> **[RICH MEDIA PLACEHOLDER]** *Annotated screenshot of localhost:5173 showing the hub index after completing the getting-started steps.*
+<!-- END-RICH-MEDIA-STUB -->
+
+<!-- RICH-MEDIA-STUB type="recording-gif" subject="Adding first project — git submodule link + sidebar appears" journey="" status="TODO" -->
+> **[RICH MEDIA PLACEHOLDER]** *GIF of running the submodule add command and watching the sidebar populate with the new project.*
+<!-- END-RICH-MEDIA-STUB -->
