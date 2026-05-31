@@ -1,21 +1,18 @@
+// Edited 2026-05-30 (base-path fix):
+//   Add PHENOTYPE_CUSTOM_DOMAIN env-var support. When set to "true" in a
+//   consumer deploy workflow, base is forced to '/' regardless of GITHUB_PAGES,
+//   preventing the /<repo>/ prefix from being baked into asset URLs for sites
+//   served from a custom domain root. Consumers on github.io/<repo>/ should NOT
+//   set this flag — they need the /<repo>/ base.
+//
 // Edited 2026-05-04 (frontend-engineer task):
 //   Fix shared VitePress asset handling so favicon/logo do not 404 on
 //   GitHub Pages deployments where `base` is `/<repo>/`.
 //   Changes:
 //     1. Normalize `base` to always end with `/` before composing asset URLs.
-//        VitePress requires the trailing slash; without it `${base}favicon.svg`
-//        becomes `/repofavicon.svg` and 404s.
-//     2. Switch favicon from `.ico` (which did not exist in any consumer's
-//        public/ tree) to `favicon.svg` — checked-in placeholders ship with
-//        phenodocs/docs/public/ because this site uses `srcDir: 'docs'`.
-//        Add an `apple-touch-icon` referencing the same.
-//     3. Drop the `.ico` reference entirely; SVG favicons are supported by all
-//        evergreen browsers VitePress targets.
-//     4. `themeConfig.logo` is left as a root-relative path ('/logo.svg');
-//        VitePress auto-prefixes `themeConfig.logo` with `base`, so consumers
-//        must NOT prepend `${base}` themselves (would double-prefix).
-//     5. `head` entries are NOT auto-prefixed by VitePress, so we DO prepend
-//        the normalized `base` for those.
+//     2. Switch favicon from `.ico` to `favicon.svg`.
+//     3. `themeConfig.logo` is left as a root-relative path ('/logo.svg').
+//     4. `head` entries ARE prefixed with normalized base.
 import { defineConfig } from 'vitepress'
 import type { ConfigOptions } from '../types/index.ts'
 import { deepMerge } from '../utils/config-merger.ts'
@@ -44,9 +41,16 @@ export function createPhenotypeConfig(options: ConfigOptions) {
 
   const repoSlug = githubRepo ?? title.toLowerCase().replace(/\s+/g, '-')
 
+  // If PHENOTYPE_CUSTOM_DOMAIN is set (e.g. by a consumer deploy workflow that has
+  // a CNAME / is served from a custom domain root), override base to '/'.
+  // This prevents the /<repo>/ prefix being baked into every asset URL, which
+  // causes blank/unstyled pages when assets 404 at the sub-path.
+  const effectiveBase =
+    process.env.PHENOTYPE_CUSTOM_DOMAIN === 'true' ? '/' : base
+
   // Normalize base: VitePress requires leading + trailing slash. Without trailing
   // slash, `${base}favicon.svg` produces a malformed URL (e.g. `/repofavicon.svg`).
-  const normalizedBase = base.endsWith('/') ? base : `${base}/`
+  const normalizedBase = effectiveBase.endsWith('/') ? effectiveBase : `${effectiveBase}/`
 
   const baseConfig = defineConfig({
     title,
