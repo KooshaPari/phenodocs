@@ -19,7 +19,7 @@
     "tokens/"
   ],
   "scripts": {
-    "build": "tsc && cp -r css dist/css",
+    "build": "tsc && node -e \"require('fs').cpSync('css','dist/css',{recursive:true})\"",
     "dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
