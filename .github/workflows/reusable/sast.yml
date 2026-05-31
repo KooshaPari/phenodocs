@@ -1,0 +1,60 @@
+name: Reusable SAST (CodeQL)
+
+# Reusable workflow: CodeQL static analysis across configurable languages.
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+on:
+  workflow_call:
+    inputs:
+      languages:
+        description: 'JSON array of CodeQL languages (e.g. ["rust","python"])'
+        type: string
+        required: false
+        default: '["javascript","typescript","python","go"]'
+      path:
+        description: 'Working directory'
+        type: string
+        required: false
+        default: '.'
+      build-mode:
+        description: 'CodeQL build mode (autobuild|manual|none)'
+        type: string
+        required: false
+        default: 'autobuild'
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  codeql:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ${{ fromJSON(inputs.languages) }}
+    defaults:
+      run:
+        working-directory: ${{ inputs.path }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.1.1
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@03e4368ac7daa7685062b45b4916063392a8bd9a
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ inputs.build-mode }}
+
+      - name: Autobuild
+        if: ${{ inputs.build-mode == 'autobuild' }}
+        uses: github/codeql-action/autobuild@b6a47468e97101a0f434231a841c9c5faf93ae6a
+
+      - name: Analyze
+        uses: github/codeql-action/analyze@461394b3130b785d9201d50e8a0c8a0c8a0c8a0c
+        with:
+          category: /language:${{ matrix.language }}
