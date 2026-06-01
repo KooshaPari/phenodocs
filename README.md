@@ -4,6 +4,7 @@
 
 > VitePress Federation Hub — Aggregate documentation from multiple projects into a unified portal
 
+[![AI Slop Inside](https://sladge.net/badge.svg)](https://sladge.net)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Bun](https://img.shields.io/badge/bun-1.x-black?logo=bun)](https://bun.sh/)
 [![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)

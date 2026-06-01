@@ -53,3 +53,7 @@ npm-debug.log*
 .github/copilot-instructions.md
 .claudeignore
 .llmignore
+*.db
+*.sqlite
+*.sqlite3
+.agileplus/

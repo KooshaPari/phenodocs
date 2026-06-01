@@ -1,4 +1,8 @@
 name: CodeQL
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 
 on:
   push:
@@ -14,7 +18,7 @@ permissions:
 jobs:
   analyze:
     name: Analyze JavaScript/TypeScript
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       actions: read
       contents: read
