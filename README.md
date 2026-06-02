@@ -1,3 +1,6 @@
+> **Work state:** MAINTENANCE · **Progress:** `████████░░ 80%`
+> VitePress federation hub aggregating org docs into one portal; live on GH Pages. Working + deployed; overlaps Paginary's doc-hub role (coherence: choose one canonical docs aggregator). · updated 2026-06-02
+
 # PhenoDocs
 
 **Status:** maintenance
