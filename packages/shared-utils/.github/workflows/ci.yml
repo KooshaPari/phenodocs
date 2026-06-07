@@ -1,0 +1,68 @@
+name: Reusable CI (Rust)
+
+# Reusable workflow: Rust CI (build, test, clippy) + optional governance validation.
+# Called by consumers via `uses: KooshaPari/phenoShared/.github/workflows/ci.yml@4b820a6d1eca7884e692e4ec4edf2b59732809cd`.
+
+permissions:
+  contents: read
+
+on:
+  workflow_call:
+    inputs:
+      language:
+        description: 'Compatibility input for older callers; Rust is the only supported CI language.'
+        type: string
+        required: false
+        default: 'rust'
+      rust-versions:
+        description: 'JSON array of Rust toolchain versions for matrix (e.g. ["stable","1.70"])'
+        type: string
+        required: false
+        default: '["stable"]'
+      path:
+        description: 'Working directory (for multi-workspace repos)'
+        type: string
+        required: false
+        default: '.'
+      clippy-args:
+        description: 'Extra args to clippy (appended after --)'
+        type: string
+        required: false
+        default: '-D warnings'
+      run-governance:
+        description: 'Also call phenotypeActions validate-governance workflow'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        rust-version: ${{ fromJSON(inputs.rust-versions) }}
+    defaults:
+      run:
+        working-directory: ${{ inputs.path }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.1.1
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@3c5f7ea28cd621ae0bf5283f0e981fb97b8a7af9
+        with:
+          toolchain: ${{ matrix.rust-version }}
+          components: clippy
+
+      - name: Build
+        run: cargo build --verbose
+
+      - name: Run tests
+        run: cargo test --verbose
+
+      - name: Run clippy
+        run: cargo clippy -- ${{ inputs.clippy-args }}
+
+  phenotype-validate:
+    if: ${{ inputs.run-governance }}
+    uses: KooshaPari/phenotypeActions/.github/workflows/validate-governance.yml@48772d7560c964fff01a209742429f24283e96cf

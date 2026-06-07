@@ -1,3 +1,6 @@
+> **Work state:** MAINTENANCE · **Progress:** `████████░░ 80%`
+> VitePress federation hub aggregating org docs into one portal; live on GH Pages. Working + deployed; overlaps Paginary's doc-hub role (coherence: choose one canonical docs aggregator). · updated 2026-06-02
+
 # PhenoDocs
 
 **Status:** maintenance
@@ -202,3 +205,11 @@ MIT License — see [LICENSE](LICENSE) for details.
 - [docs_engine](https://github.com/yourorg/docs_engine) — Agent-driven documentation lifecycle
 - [thegent](https://github.com/yourorg/thegent) — AI agent system
 - [pheno-sdk](https://github.com/yourorg/pheno-sdk) — SDK for Pheno APIs
+
+---
+
+## Rich Media Stubs
+
+<!-- RICH-MEDIA-STUB type="recording-gif" subject="PhenoDocs E2E — clone, install, dev, browse" journey="" status="TODO" -->
+> **[RICH MEDIA PLACEHOLDER]** *GIF of the full quickstart: clone repo, bun install, bun run dev, browser opens to hub.*
+<!-- END-RICH-MEDIA-STUB -->

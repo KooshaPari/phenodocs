@@ -39,6 +39,7 @@
   "author": "Kush Team",
   "license": "MIT",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/shared-utils/packages/*"
   ]
 }
