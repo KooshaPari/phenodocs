@@ -1,9 +1,12 @@
 name: Publish @phenotype/docs
+<<<<<<< HEAD
 permissions:
   contents: read
 
 on:
   workflow_dispatch:
+=======
+>>>>>>> origin/main
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

@@ -1,6 +1,14 @@
 name: Quality Gate
+<<<<<<< HEAD
 on:
   workflow_dispatch:
+=======
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on: [push, pull_request]
+>>>>>>> origin/main
 
 permissions:
   contents: read

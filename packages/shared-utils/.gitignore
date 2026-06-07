@@ -1,0 +1,35 @@
+/target
+*.swp
+*.swo
+.DS_Store
+
+# VitePress
+docs/.vitepress/cache
+docs/.vitepress/dist
+node_modules
+docs/bun.lock
+docs/tests/
+docs/vitest.config.ts
+vendor/
+
+# Worktree directories (org policy)
+.claude/worktrees/
+target/
+Cargo.lock
+Cargo.lock
+
+# ===== Standard auto-generated hygiene ignores (do not edit manually) =====
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+coverage/
+.pytest_cache/
+__pycache__/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+# ===== End standard hygiene ignores =====
