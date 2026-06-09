@@ -1,3 +1,14 @@
+## Work State
+
+| Field | Value |
+|---|---|
+| Last commit | 2026-06-08 18:46:48 -0700 |
+| Open issues | 10 |
+| Open PRs | 4 |
+| Focus | docs hygiene |
+
+Progress: ████████░░ 80%
+
 # PhenoDocs
 
 **Status:** maintenance
