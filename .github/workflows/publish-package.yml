@@ -1,4 +1,12 @@
 name: Publish @phenotype/docs
+<<<<<<< HEAD
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+=======
+>>>>>>> origin/main
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -9,10 +17,6 @@ on:
     paths:
       - 'packages/docs/**'
   workflow_dispatch:
-
-permissions:
-  contents: read
-
 jobs:
   publish:
     runs-on: ubuntu-24.04
@@ -20,7 +24,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v4
 
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6
         with:
@@ -31,7 +35,7 @@ jobs:
 
       - name: Publish to GitHub Packages
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ github.token }}
         run: |
           cat > "$RUNNER_TEMP/bunfig.toml" <<'EOF'
           [install.scopes]
