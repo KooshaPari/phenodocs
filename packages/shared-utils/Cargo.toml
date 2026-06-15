@@ -46,3 +46,6 @@ tokio = { version = "1.40", features = ["full"] }
 tracing = "0.1"
 tracing-opentelemetry = "0.32"
 validator = "0.20"
+
+[dependencies]
+clap-ext = { git = "https://github.com/KooshaPari/clap-ext", tag = "v0.1.0" }
