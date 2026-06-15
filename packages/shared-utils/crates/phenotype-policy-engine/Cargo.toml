@@ -2,9 +2,13 @@
 name = "phenotype-policy-engine"
 version.workspace = true
 edition.workspace = true
-license.workspace = true
-repository.workspace = true
 description = "Generic policy evaluation engine for Phenotype, supporting rule-based policy decision-making across all domains"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KooshaPari/phenodocs"
+documentation = "https://docs.rs/phenotype-policy-engine"
+keywords = ["phenotype", "phenodocs", "policy"]
+categories = ["authorization"]
+authors = ["kooshapari"]
 
 [dependencies]
 serde = { workspace = true, features = ["derive"] }

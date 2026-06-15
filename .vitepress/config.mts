@@ -32,8 +32,11 @@ export default createPhenotypeConfig({
   nav: [
     { text: 'Guide', link: '/guide/getting-started' },
     { text: 'Architecture', link: '/guide/architecture' },
+    { text: 'Tutorials', link: '/tutorials/' },
     { text: 'API', link: '/reference/api' },
     { text: 'Governance', link: '/governance/overview' },
+    { text: 'RFCs', link: '/rfcs/' },
+    { text: 'Changelog', link: '/changelog/' },
     { text: 'Roadmap', link: '/roadmap/' },
     { text: 'Workspace views', link: '/views/' },
   ],
@@ -45,8 +48,11 @@ export default createPhenotypeConfig({
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Architecture', link: '/guide/architecture' },
+      { text: 'Tutorials', link: '/tutorials/' },
       { text: 'API', link: '/reference/api' },
       { text: 'Governance', link: '/governance/overview' },
+      { text: 'RFCs', link: '/rfcs/' },
+      { text: 'Changelog', link: '/changelog/' },
       { text: 'Roadmap', link: '/roadmap/' },
       { text: 'Workspace views', link: '/views/' }
     ],
@@ -62,11 +68,51 @@ export default createPhenotypeConfig({
           ]
         }
       ],
+      '/tutorials/': [
+        {
+          text: 'Tutorials',
+          items: [
+            { text: 'Index', link: '/tutorials/' },
+            { text: '01 — First-time setup', link: '/tutorials/01-first-time-setup' },
+            { text: '02 — Adding a project', link: '/tutorials/02-adding-a-project' },
+            { text: '03 — Generating API reference', link: '/tutorials/03-generating-api-reference' },
+            { text: '04 — Writing an RFC', link: '/tutorials/04-writing-an-rfc' },
+            { text: '05 — Cutting a release', link: '/tutorials/05-cutting-a-release' }
+          ]
+        }
+      ],
       '/reference/': [
         {
           text: 'Reference',
           items: [
-            { text: 'API', link: '/reference/api' }
+            { text: 'API', link: '/reference/api' },
+            { text: 'OpenAPI index', link: '/api/openapi/' }
+          ]
+        }
+      ],
+      '/api/': [
+        {
+          text: 'API',
+          items: [
+            { text: 'Index', link: '/api/' },
+            { text: 'OpenAPI reference', link: '/api/openapi/' }
+          ]
+        }
+      ],
+      '/rfcs/': [
+        {
+          text: 'RFCs',
+          items: [
+            { text: 'Index', link: '/rfcs/' },
+            { text: 'Template', link: '/rfcs/template' }
+          ]
+        }
+      ],
+      '/changelog/': [
+        {
+          text: 'Changelog',
+          items: [
+            { text: 'Releases', link: '/changelog/' }
           ]
         }
       ],
@@ -75,6 +121,8 @@ export default createPhenotypeConfig({
           text: 'Governance',
           items: [
             { text: 'Overview', link: '/governance/overview' },
+            { text: 'VitePress unification', link: '/governance/vitepress-unification' },
+            { text: 'RFC flow', link: '/governance/rfc-flow' },
             { text: 'Stacked PRs', link: '/governance/stacked-prs/' }
           ]
         }

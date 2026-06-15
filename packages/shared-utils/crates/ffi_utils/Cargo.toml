@@ -3,6 +3,12 @@ name = "ffi_utils"
 version = "0.1.0"
 edition = "2021"
 description = "FFI helper utilities (regex caching, sync primitives)"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KooshaPari/phenodocs"
+documentation = "https://docs.rs/ffi_utils"
+keywords = ["phenotype", "phenodocs", "ffi"]
+categories = ["api-bindings"]
+authors = ["kooshapari"]
 
 [dependencies]
 parking_lot = "0.12"

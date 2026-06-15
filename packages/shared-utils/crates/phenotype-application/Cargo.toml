@@ -2,11 +2,14 @@
 name = "phenotype-application"
 version.workspace = true
 edition.workspace = true
-license.workspace = true
 description = "Phenotype Application Layer - CQRS commands, queries, and use case handlers"
-documentation = "https://docs.phenotype.chat/xdd/application"
+documentation = "https://docs.rs/phenotype-application"
 homepage = "https://phenotype.chat"
-repository.workspace = true
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KooshaPari/phenodocs"
+keywords = ["phenotype", "phenodocs", "application"]
+categories = ["data-structures"]
+authors = ["kooshapari"]
 
 [dependencies]
 # Domain layer (core business logic, zero external deps)

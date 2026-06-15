@@ -33,6 +33,7 @@ npm-debug.log*
 # Generated
 .llms/
 *.llms.txt
+docs/.generated/api/
 
 # Added by Spec Kitty CLI (auto-managed)
 .opencode/

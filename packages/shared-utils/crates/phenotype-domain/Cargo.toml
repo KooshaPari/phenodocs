@@ -2,8 +2,13 @@
 name = "phenotype-domain"
 version.workspace = true
 edition.workspace = true
-license.workspace = true
 description = "Core domain model for Phenotype - DDD, Hexagonal, Clean Architecture"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KooshaPari/phenodocs"
+documentation = "https://docs.rs/phenotype-domain"
+keywords = ["phenotype", "phenodocs", "domain"]
+categories = ["data-structures"]
+authors = ["kooshapari"]
 
 [dependencies]
 

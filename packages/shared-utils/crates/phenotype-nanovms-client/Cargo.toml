@@ -2,14 +2,16 @@
 name = "phenotype-nanovms-client"
 version = "0.1.0"
 edition = "2021"
-license = "Apache-2.0"
+license = "MIT OR Apache-2.0"
 description = "Rust client library for NanoVMs unikernel orchestration (wraps the `ops` CLI)"
-repository = "https://github.com/KooshaPari/phenoShared"
+repository = "https://github.com/KooshaPari/phenodocs"
 keywords = ["nanovms", "unikernel", "ops", "sandbox", "orchestration"]
 categories = ["os", "virtualization", "api-bindings"]
 rust-version = "1.75"
-authors = ["Phenotype contributors"]
 readme = "README.md"
+authors = ["kooshapari", "Phenotype contributors"]
+documentation = "https://docs.rs/phenotype-nanovms-client"
+authors = ["kooshapari", "Phenotype contributors"]
 
 [lib]
 name = "phenotype_nanovms_client"

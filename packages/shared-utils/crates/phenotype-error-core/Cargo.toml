@@ -3,8 +3,12 @@ name = "phenotype-error-core"
 version = "0.2.0"
 description = "Canonical error types and recovery strategies for the Phenotype ecosystem"
 edition.workspace = true
-license.workspace = true
-repository.workspace = true
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KooshaPari/phenodocs"
+documentation = "https://docs.rs/phenotype-error-core"
+keywords = ["phenotype", "phenodocs", "error"]
+categories = ["rust-patterns", "data-structures"]
+authors = ["kooshapari"]
 
 [lib]
 path = "src/lib.rs"

@@ -8,11 +8,6 @@ permissions:
 
 =======
 >>>>>>> origin/main
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-
 on:
   push:
     branches: [main]
@@ -20,6 +15,11 @@ on:
     branches: [main]
   schedule:
     - cron: '17 4 * * 1'
+
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   analyze:
     name: Analyze JavaScript/TypeScript

@@ -2,9 +2,13 @@
 name = "phenotype-config-core"
 version = "0.2.0"
 edition.workspace = true
-license.workspace = true
-repository.workspace = true
 description = "Core configuration types and traits for Phenotype crates"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KooshaPari/phenodocs"
+documentation = "https://docs.rs/phenotype-config-core"
+keywords = ["phenotype", "phenodocs", "config"]
+categories = ["config", "data-structures"]
+authors = ["kooshapari"]
 
 [lib]
 path = "src/lib.rs"

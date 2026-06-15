@@ -1,0 +1,180 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Phenotype Federation",
+    "version": "0.1.0",
+    "description": "Canonical reference for the PhenoDocs federation hub. This spec is auto-rendered at `/api/openapi/phenodocs/`.",
+    "contact": {
+      "name": "PhenoDocs Maintainers",
+      "email": "docs@phenotype.example"
+    },
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    { "url": "https://phenodocs.example", "description": "Production" },
+    { "url": "http://localhost:5173", "description": "Local dev" }
+  ],
+  "paths": {
+    "/guide/{slug}": {
+      "get": {
+        "tags": ["guide"],
+        "operationId": "getGuide",
+        "summary": "Fetch a guide page by slug",
+        "description": "Returns a rendered Markdown guide and its last-updated timestamp.",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Slug of the guide (e.g. 'getting-started')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Guide rendered successfully",
+            "content": {
+              "text/markdown": {
+                "schema": { "$ref": "#/components/schemas/Guide" }
+              }
+            }
+          },
+          "404": { "description": "Guide not found" }
+        }
+      }
+    },
+    "/api/openapi/{name}": {
+      "get": {
+        "tags": ["reference"],
+        "operationId": "getOpenApiReference",
+        "summary": "List generated API reference pages",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Reference name (e.g. 'phenodocs', 'thegent')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reference page index",
+            "content": {
+              "text/markdown": {
+                "schema": { "$ref": "#/components/schemas/ReferenceIndex" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/changelog": {
+      "get": {
+        "tags": ["changelog"],
+        "operationId": "getChangelog",
+        "summary": "List release notes",
+        "responses": {
+          "200": {
+            "description": "Changelog page index",
+            "content": {
+              "text/markdown": {
+                "schema": { "$ref": "#/components/schemas/Changelog" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rfcs": {
+      "get": {
+        "tags": ["governance"],
+        "operationId": "listRfc",
+        "summary": "List all RFCs by status",
+        "responses": {
+          "200": {
+            "description": "RFC index grouped by status",
+            "content": {
+              "text/markdown": {
+                "schema": { "$ref": "#/components/schemas/RfcIndex" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Guide": {
+        "type": "object",
+        "required": ["slug", "title", "markdown"],
+        "properties": {
+          "slug": { "type": "string", "description": "URL slug" },
+          "title": { "type": "string", "description": "Human title" },
+          "markdown": { "type": "string", "description": "Rendered Markdown body" },
+          "lastUpdated": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ReferenceIndex": {
+        "type": "object",
+        "required": ["name", "pages"],
+        "properties": {
+          "name": { "type": "string" },
+          "pages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["path", "title"],
+              "properties": {
+                "path": { "type": "string" },
+                "title": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "Changelog": {
+        "type": "object",
+        "required": ["releases"],
+        "properties": {
+          "releases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["version", "date", "body"],
+              "properties": {
+                "version": { "type": "string" },
+                "date": { "type": "string", "format": "date" },
+                "body": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "RfcIndex": {
+        "type": "object",
+        "required": ["proposed", "accepted", "rejected"],
+        "properties": {
+          "proposed": { "type": "array", "items": { "$ref": "#/components/schemas/Rfc" } },
+          "accepted": { "type": "array", "items": { "$ref": "#/components/schemas/Rfc" } },
+          "rejected": { "type": "array", "items": { "$ref": "#/components/schemas/Rfc" } }
+        }
+      },
+      "Rfc": {
+        "type": "object",
+        "required": ["number", "title", "status", "author", "date"],
+        "properties": {
+          "number": { "type": "integer" },
+          "title": { "type": "string" },
+          "status": { "type": "string", "enum": ["proposed", "accepted", "rejected", "superseded"] },
+          "author": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "supersededBy": { "type": "integer", "nullable": true }
+        }
+      }
+    }
+  }
+}

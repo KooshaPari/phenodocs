@@ -2,9 +2,14 @@
 name = "phenotype-postgres-adapter"
 version = "0.1.0"
 edition = "2021"
-authors = ["Phenotype Team"]
-license = "MIT"
+license = "MIT OR Apache-2.0"
 description = "PostgreSQL adapter for hexagonal architecture"
+repository = "https://github.com/KooshaPari/phenodocs"
+authors = ["kooshapari", "Phenotype Team"]
+documentation = "https://docs.rs/phenotype-postgres-adapter"
+keywords = ["phenotype", "phenodocs", "postgres"]
+categories = ["database"]
+authors = ["kooshapari", "Phenotype Team"]
 
 [dependencies]
 # Async runtime

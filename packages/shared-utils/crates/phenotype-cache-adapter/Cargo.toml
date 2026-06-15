@@ -2,9 +2,13 @@
 name = "phenotype-cache-adapter"
 version.workspace = true
 edition.workspace = true
-license.workspace = true
-repository.workspace = true
 description = "Phenotype shared crate"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KooshaPari/phenodocs"
+documentation = "https://docs.rs/phenotype-cache-adapter"
+keywords = ["phenotype", "phenodocs", "cache"]
+categories = ["caching"]
+authors = ["kooshapari"]
 
 [dependencies]
 serde = { workspace = true, features = ["derive"] }

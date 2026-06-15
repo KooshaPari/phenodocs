@@ -4,6 +4,7 @@ from __future__ import annotations
 import asyncio
 import re
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
@@ -325,7 +326,7 @@ class TestScriptExecution:
         # (actual link checking results depend on external URLs)
         result = subprocess.run(
             [
-                "python",
+                sys.executable,
                 "-c",
                 "from scripts.check_docs_links import main, extract_links_from_file, LinkResult; print('Import OK')",
             ],
@@ -342,7 +343,7 @@ class TestScriptExecution:
 
         result = subprocess.run(
             [
-                "python",
+                sys.executable,
                 "-c",
                 "from scripts.check_docs_links import main; raise SystemExit(main())",
             ],
