@@ -5,11 +5,10 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "Redis adapter for hexagonal architecture"
 repository = "https://github.com/KooshaPari/phenodocs"
-authors = ["kooshapari", "Phenotype Team"]
 documentation = "https://docs.rs/phenotype-redis-adapter"
 keywords = ["phenotype", "phenodocs", "redis"]
 categories = ["database"]
-authors = ["kooshapari", "Phenotype Team"]
+authors = ["kooshapari"]
 
 [dependencies]
 # Async runtime

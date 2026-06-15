@@ -9,9 +9,8 @@ keywords = ["nanovms", "unikernel", "ops", "sandbox", "orchestration"]
 categories = ["os", "virtualization", "api-bindings"]
 rust-version = "1.75"
 readme = "README.md"
-authors = ["kooshapari", "Phenotype contributors"]
 documentation = "https://docs.rs/phenotype-nanovms-client"
-authors = ["kooshapari", "Phenotype contributors"]
+authors = ["kooshapari"]
 
 [lib]
 name = "phenotype_nanovms_client"
