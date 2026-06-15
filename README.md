@@ -234,3 +234,13 @@ MIT License — see [LICENSE](LICENSE) for details.
 <!-- RICH-MEDIA-STUB type="recording-gif" subject="PhenoDocs E2E — clone, install, dev, browse" journey="" status="TODO" -->
 > **[RICH MEDIA PLACEHOLDER]** *GIF of the full quickstart: clone repo, bun install, bun run dev, browser opens to hub.*
 <!-- END-RICH-MEDIA-STUB -->
+
+## Documentation
+
+This repository includes the following cross-cutting documents:
+
+- [`AGENTS.md`](AGENTS.md) — operating instructions for AI agents and human contributors
+- [`SPEC.md`](SPEC.md) — formal specification of behavior and contracts
+- [`ARCHITECTURE.md`](ARCHITECTURE.md) — system architecture and component overview
+- [`docs/`](docs/) — design notes, ADRs, and supporting documentation (see [`docs/index.md`](docs/index.md))
+
