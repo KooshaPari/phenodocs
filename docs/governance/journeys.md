@@ -35,11 +35,3 @@ The full standard lives in
 
 If a repo does not yet have keyframes or a recording for a flow, call that out
 explicitly and link the blocker. Do not leave the journey undocumented.
-
----
-
-## Rich Media Stubs
-
-<!-- RICH-MEDIA-STUB type="recording-mp4" subject="Governance journey — full-turn delivery flow in phenodocs" journey="" status="TODO" -->
-> **[RICH MEDIA PLACEHOLDER]** *Video walkthrough of the full-turn-delivery journey from spec to published docs page.*
-<!-- END-RICH-MEDIA-STUB -->
