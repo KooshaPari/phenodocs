@@ -10,13 +10,11 @@ concurrency:
   cancel-in-progress: true
 
 
-on:
   pull_request:
     types: [opened, synchronize, reopened]
   push:
     branches: [main]
   workflow_dispatch:
-concurrency:
   group: "pages"
   cancel-in-progress: false
 
