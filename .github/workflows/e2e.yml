@@ -18,27 +18,28 @@ jobs:
   e2e:
     name: Playwright E2E
     runs-on: ubuntu-24.04
+    env:
+      GITHUB_ACTIONS: 'false'
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
-      - name: Setup Node
-        uses: actions/setup-node@1a4442cacd436585916f4bd0495db9b8a8a0d4d8
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@735282b5bdda6b3fda6a1a2ed1d4ed9dadbb439a
         with:
-          node-version: 20
-          cache: 'npm'
+          bun-version: 1.3.10
 
       - name: Install
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Build VitePress site
-        run: npm run build
+        run: bun run build
 
       - name: Install Playwright
-        run: npx playwright install --with-deps chromium
+        run: bunx playwright install --with-deps chromium
 
       - name: Run E2E tests
-        run: npx playwright test
+        run: bunx playwright test
 
       - name: Upload report on failure
         if: failure()
