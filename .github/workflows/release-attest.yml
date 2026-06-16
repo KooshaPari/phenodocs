@@ -48,7 +48,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build artifact
-        # VitePress static docs site. Build outputs to docs/.vitepress/dist/.
+        # VitePress static docs site. Build outputs to .vitepress/dist/.
         run: bun run build
 
       - name: Attest build provenance
@@ -56,12 +56,11 @@ jobs:
         uses: actions/attest-build-provenance@35a8f9717e7a2adb1c2c3b2ac88961ba9c230e98 # v1.3.0
         with:
           subject-name: ${{ github.repository }}
-          # Hash the VitePress build output directory deterministically.
-          subject-digest: sha256:$(find docs/.vitepress/dist -type f -exec sha256sum {} + | sort | sha256sum | awk '{print $1}')
+          subject-path: .vitepress/dist/
           push-to-registry: false
 
       - name: Upload artifact
         uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd0de8ccd5686b70862 # v4.6.0
         with:
           name: ${{ github.event.inputs.version || github.ref_name }}-vitepress-site
-          path: docs/.vitepress/dist/
+          path: .vitepress/dist/

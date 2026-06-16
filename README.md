@@ -8,7 +8,7 @@
 [![Bun](https://img.shields.io/badge/bun-1.x-black?logo=bun)](https://bun.sh/)
 [![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
 [![VitePress](https://img.shields.io/badge/VitePress-1.x-green.svg)](https://vitepress.dev/)
-[![Deploy](https://github.com/kooshapari/phenodocs/actions/workflows/deploy.yml/badge.svg)](https://github.com/kooshapari/phenodocs/actions/workflows/deploy.yml)
+[![Release](https://github.com/kooshapari/phenodocs/actions/workflows/release-attest.yml/badge.svg)](https://github.com/kooshapari/phenodocs/actions/workflows/release-attest.yml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Ready-green)](https://kooshapari.github.io/phenodocs/)
 
 **Live Demo**: https://kooshapari.github.io/phenodocs/
