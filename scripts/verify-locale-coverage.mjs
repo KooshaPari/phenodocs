@@ -27,6 +27,7 @@ function* walk(dir) {
 const sourceFiles = [...walk(SRC)]
   .map((p) => relative(SRC, p))
   .filter((p) => /\.(md|vue|mdx)$/i.test(p))
+  .filter((p) => !LOCALES.some((loc) => p === loc || p.startsWith(`${loc}/`)))
 
 const gaps = []
 for (const rel of sourceFiles) {

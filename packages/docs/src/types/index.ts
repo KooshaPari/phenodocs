@@ -37,6 +37,8 @@ export interface ConfigOptions {
   nav?: DefaultTheme.NavItem[]
   /** Sidebar config (merged with defaults) */
   sidebar?: DefaultTheme.Sidebar
+  /** VitePress i18n locale definitions */
+  locales?: UserConfig<DefaultTheme.Config>['locales']
   /** Additional VitePress config to deep-merge */
   overrides?: Partial<UserConfig<DefaultTheme.Config>>
 }

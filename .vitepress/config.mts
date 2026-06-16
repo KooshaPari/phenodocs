@@ -56,7 +56,9 @@ export default createPhenotypeConfig({
           { text: 'Guide', link: '/guide/getting-started' },
           { text: 'Architecture', link: '/guide/architecture' },
           { text: 'API', link: '/reference/api' },
-          { text: 'Governance', link: '/governance/overview' }
+          { text: 'Governance', link: '/governance/overview' },
+          { text: 'Roadmap', link: '/roadmap/' },
+          { text: 'Workspace views', link: '/views/' },
         ]
       }
     },

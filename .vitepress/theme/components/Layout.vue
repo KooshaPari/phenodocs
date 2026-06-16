@@ -14,6 +14,7 @@
 import { provide, ref, watch, onMounted } from 'vue'
 import { useRoute, useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import SkipLink from './SkipLink.vue'
 
 const { Layout: DefaultLayout } = DefaultTheme
 const route = useRoute()
@@ -43,13 +44,13 @@ watch(() => route.path, announcePageTitle)
 
 <template>
   <div>
+    <SkipLink />
     <!-- AT3: live region for SPA navigation announcements. -->
     <div
       id="doc-live"
       aria-live="polite"
       aria-atomic="true"
       role="status"
-      :key="liveNonce"
     >
       {{ liveMessage }}
     </div>

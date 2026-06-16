@@ -39,6 +39,7 @@ export function createPhenotypeConfig(options: ConfigOptions) {
     githubRepo,
     nav = [],
     sidebar = {},
+    locales,
     overrides = {},
   } = options
 
@@ -54,6 +55,7 @@ export function createPhenotypeConfig(options: ConfigOptions) {
     lang: 'en-US',
     srcDir,
     base: normalizedBase,
+    ...(locales !== undefined ? { locales } : {}),
     lastUpdated: true,
     cleanUrls: true,
 

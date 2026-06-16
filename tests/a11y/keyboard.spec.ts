@@ -9,20 +9,21 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import { chromium, type Browser, type Page } from '@playwright/test'
-
-const BASE_URL = process.env.E2E_BASE_URL ?? 'http://localhost:5173'
+import { acquireDevServer, releaseDevServer, BASE_URL } from './dev-server.ts'
 
 let browser: Browser
 let page: Page
 
 beforeAll(async () => {
+  await acquireDevServer()
   browser = await chromium.launch()
   page = await browser.newPage()
-})
+}, 90_000)
 
 afterAll(async () => {
   await page?.close()
   await browser?.close()
+  await releaseDevServer()
 })
 
 const ROUTES = [

@@ -7,13 +7,10 @@
  * critical or serious violation.
  */
 import { describe, it, expect, beforeAll, afterAll } from 'vitest'
-import { spawn, type ChildProcess } from 'node:child_process'
 import AxeBuilder from '@axe-core/playwright'
 import { chromium, type Browser, type Page } from '@playwright/test'
 import { AXE_OPTIONS } from '../../axe-config.ts'
-
-const DEV_PORT = Number(process.env.DEV_PORT ?? 5173)
-const BASE_URL = `http://localhost:${DEV_PORT}`
+import { acquireDevServer, releaseDevServer, BASE_URL } from './dev-server.ts'
 
 // Routes are emitted at build time by a tiny codegen step; for now we
 // hardcode the canonical top-level routes plus a couple of deep links
@@ -29,31 +26,11 @@ const ROUTES = [
   '/views/',
 ]
 
-let devServer: ChildProcess
 let browser: Browser
 let page: Page
 
 beforeAll(async () => {
-  devServer = spawn('bunx', ['vitepress', 'dev', 'docs', '--port', String(DEV_PORT)], {
-    cwd: process.cwd(),
-    env: { ...process.env, NODE_ENV: 'test' },
-    stdio: ['ignore', 'pipe', 'pipe'],
-  })
-  // Wait for VitePress "ready in" line.
-  await new Promise<void>((resolve, reject) => {
-    const timer = setTimeout(
-      () => reject(new Error('VitePress dev server did not start in 60s')),
-      60_000,
-    )
-    devServer.stdout?.on('data', (chunk) => {
-      if (chunk.toString().includes('ready in')) {
-        clearTimeout(timer)
-        resolve()
-      }
-    })
-    devServer.on('error', reject)
-  })
-
+  await acquireDevServer()
   browser = await chromium.launch()
   page = await browser.newPage()
 }, 90_000)
@@ -61,7 +38,7 @@ beforeAll(async () => {
 afterAll(async () => {
   await page?.close()
   await browser?.close()
-  devServer?.kill('SIGTERM')
+  await releaseDevServer()
 })
 
 describe('VitePress WCAG 2.1 AA', () => {
