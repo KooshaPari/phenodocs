@@ -1,8 +1,5 @@
 package docslib
 
-// Version is the current version
-const Version = "0.1.0"
-
 // Doc represents a parsed documentation document
 type Doc struct {
 	Title   string

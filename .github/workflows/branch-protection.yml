@@ -1,0 +1,69 @@
+name: Branch Protection
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  enforce-protection:
+    name: Enforce Branch Protection
+    if: github.repository_owner == 'PhenotypeAI'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v4
+
+      - name: Apply branch protection rules
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
+        with:
+          github-token: ${{ secrets.PAT_BRANCH_PROTECTION || secrets.GITHUB_TOKEN }}
+          script: |
+            const { repo, owner } = context.repo;
+
+            // Define branch protection rules for main
+            const protectionRules = {
+              required_status_checks: {
+                strict: true,
+                contexts: [
+                  "CodeQL Analysis",
+                  "Dependency Audit",
+                  "Secret Scan (Gitleaks)",
+                  "Scorecard analysis"
+                ]
+              },
+              enforce_admins: true,
+              required_pull_request_reviews: {
+                required_approving_review_count: 1,
+                dismiss_stale_reviews: true,
+                require_code_owner_reviews: true
+              },
+              restrictions: null,
+              required_linear_history: true,
+              allow_force_pushes: false,
+              allow_deletions: false,
+              required_conversation_resolution: true,
+              lock_branch: false,
+              allow_fork_syncing: true
+            };
+
+            try {
+              await github.rest.repos.updateBranchProtection({
+                owner,
+                repo,
+                branch: 'main',
+                ...protectionRules
+              });
+              console.log('✅ Branch protection applied to main');
+            } catch (error) {
+              console.error('❌ Failed to apply branch protection:', error.message);
+              console.log('This requires admin permissions or a PAT with repo scope.');
+              console.log('Set PAT_BRANCH_PROTECTION in repository secrets to automate this.');
+              core.setFailed(error.message);
+            }
