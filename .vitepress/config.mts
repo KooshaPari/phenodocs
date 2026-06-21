@@ -10,6 +10,11 @@
 //        VitePress resolves `public/` relative to `srcDir: 'docs'`.
 //     3. `docsBase` is normalized to always end with `/` — required by
 //        VitePress for correct asset URL composition under GitHub Pages.
+//
+// Edited 2026-06-16 (a11y-baseline AT4/AT5):
+//   Add `locales` block to enable VitePress built-in i18n with two locales
+//   (English, Spanish) plus Arabic RTL coverage. Per-locale `dir` is set
+//   on the root layout by VitePress, satisfying the AT5 rtl requirement.
 import { createPhenotypeConfig } from '../packages/docs/src/config/index.ts'
 
 // Environment-based configuration for GitHub Pages compatibility.
@@ -37,6 +42,39 @@ export default createPhenotypeConfig({
     { text: 'Roadmap', link: '/roadmap/' },
     { text: 'Workspace views', link: '/views/' },
   ],
+
+  // VitePress built-in i18n (AT4 + AT5): English root, Spanish LTR, Arabic RTL.
+  // VitePress automatically applies `<html dir="..." lang="...">` per-locale and
+  // resolves content from `docs/<locale>/...` for non-root locales.
+  locales: {
+    root: {
+      label: 'English',
+      lang: 'en-US',
+      dir: 'ltr',
+      themeConfig: {
+        nav: [
+          { text: 'Guide', link: '/guide/getting-started' },
+          { text: 'Architecture', link: '/guide/architecture' },
+          { text: 'API', link: '/reference/api' },
+          { text: 'Governance', link: '/governance/overview' },
+          { text: 'Roadmap', link: '/roadmap/' },
+          { text: 'Workspace views', link: '/views/' },
+        ]
+      }
+    },
+    es: {
+      label: 'Español',
+      lang: 'es-ES',
+      dir: 'ltr',
+      link: '/es/'
+    },
+    ar: {
+      label: 'العربية',
+      lang: 'ar',
+      dir: 'rtl',
+      link: '/ar/'
+    }
+  },
 
   themeConfig: {
     logo: '/logo.svg',

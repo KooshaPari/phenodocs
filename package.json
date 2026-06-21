@@ -13,7 +13,11 @@
     "lint:ts": "oxlint .vitepress --config oxlint.json",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
     "check": "bun run lint:ts && bun run typecheck && uv run python scripts/check_docs_links.py",
-    "check-links": "uv run python scripts/check_docs_links.py"
+    "check-links": "uv run python scripts/check_docs_links.py",
+    "test:a11y": "vitest run tests/a11y",
+    "test:a11y:watch": "vitest tests/a11y",
+    "check:alts": "node scripts/check-image-alts.mjs",
+    "check:locales": "node scripts/verify-locale-coverage.mjs"
   },
   "dependencies": {
     "@phenotype/docs": "workspace:*",
@@ -21,9 +25,13 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "@playwright/test": "1.59.1",
+    "axe-core": "^4.10.3",
     "markdownlint-cli": "^0.48.0",
     "oxlint": "^1.57.0",
     "typescript": "^6.0.2",
+    "vitest": "^2.1.9",
     "vue-tsc": "^3.2.6"
   },
   "engines": {

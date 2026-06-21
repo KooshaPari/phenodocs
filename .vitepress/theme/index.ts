@@ -22,7 +22,12 @@ import Toast from './components/Toast.vue'
 import ToastContainer from './components/ToastContainer.vue'
 import Tooltip from './components/Tooltip.vue'
 import EcosystemHub from './components/EcosystemHub.vue'
+
+// AT2/AT3/AT5 — accessibility baseline additions
+import Layout from './components/Layout.vue'
+import SkipLink from './components/SkipLink.vue'
 import './custom.css'
+import './a11y.css'
 
 const theme: Theme = {
   ...DefaultTheme,
@@ -49,8 +54,12 @@ const theme: Theme = {
     app.component('ToastContainer', ToastContainer)
     app.component('Tooltip', Tooltip)
     app.component('EcosystemHub', EcosystemHub)
+    // AT2 — register custom skip link so it slots above the VPDoc
+    app.component('SkipLink', SkipLink)
   },
-  Layout: DefaultTheme.Layout,
+  // AT3 — replace default layout with one that injects the live region
+  // and page-title announcer.
+  Layout,
 }
 
 export default theme
