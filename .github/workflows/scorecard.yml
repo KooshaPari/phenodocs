@@ -19,6 +19,7 @@ concurrency:
 jobs:
   analysis:
     name: Scorecard analysis
+    if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     permissions:
       security-events: write
