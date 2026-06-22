@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Setup language
-        uses: actions/setup-node@1a4442cacd436585916f4bd0495db9b8a8a0d4d8
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
