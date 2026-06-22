@@ -31,7 +31,7 @@ jobs:
           artifact-name: sbom.cdx.json
 
       - name: Upload SBOM artifact
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd0de8ccd5686b70862
+        uses: actions/upload-artifact@v4
         with:
           name: sbom-${{ github.event.inputs.version || github.ref_name }}
           path: sbom.cdx.json
@@ -39,6 +39,6 @@ jobs:
 
       - name: Attach to release (on tag)
         if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@c95f20ddfc40fe273f2e886b5d5cc2a201cb4b1d
+        uses: softprops/action-gh-release@v3
         with:
           files: sbom.cdx.json

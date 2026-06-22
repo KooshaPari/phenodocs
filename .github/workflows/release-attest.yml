@@ -33,14 +33,14 @@ jobs:
           echo "build artifact" > dist/artifact
 
       - name: Attest build provenance (SC4 wired signal)
-        uses: actions/attest-build-provenance@35a8f9717e7a2adb1c2c3b2ac88961ba9c230e98
+        uses: actions/attest-build-provenance@v4
         with:
           subject-name: ${{ github.repository }}
           subject-digest: sha256:$(sha256sum dist/artifact | awk '{print $1}')
           push-to-registry: false
 
       - name: Upload artifact
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd0de8ccd5686b70862
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.inputs.version || github.ref_name }}-artifact
           path: dist/
