@@ -1,0 +1,40 @@
+name: Dependency Vulnerability Scan
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 7 * * 1" # weekly Monday
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions: read-all
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  osv-scan:
+    name: OSV Dependency Scan
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v4
+
+      - name: Run OSV Scanner (npm)
+        uses: google/osv-scanner-action@13c39bb3adb1dd15d2d780f77d80b031917fd1a1 # v2.0.0
+        with:
+          scan-args: |-
+            --lockfile=bun.lock
+            --format=sarif
+            --output=osv-results.sarif
+
+      - name: Upload OSV SARIF
+        uses: github/codeql-action/upload-sarif@e46ed2cbd01164d986452f91f178727624ae40d7
+        with:
+          sarif_file: osv-results.sarif
+          category: osv-scanner
