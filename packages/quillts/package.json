@@ -1,0 +1,38 @@
+{
+  "name": "@phenotype/quillts",
+  "version": "0.1.0",
+  "description": "Phenotype quill HTTP toolkit (TypeScript client with interceptors, retries, mock) — absorbed from KooshaPari/Quillr",
+  "license": "MIT",
+  "repository": "https://github.com/KooshaPari/phenodocs/tree/main/packages/quillts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.{ts,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,json,md}\"",
+    "check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  },
+  "absorption": {
+    "source_repo": "KooshaPari/Quillr",
+    "source_package": "@kooshapari/quillts",
+    "absorbed_at": "2026-07-17T12:00:00.000000Z",
+    "rationale": "Quillr TS client is the Phenotype org's HTTP toolkit TypeScript half; Rust half (httpora-core) absorbed into pheno separately. Quillr + Httpora identity reconciliation per RATIONALIZATION_PLAN.md is now complete across both monorepos.",
+    "note": "npm scope normalized from @kooshapari/quillts to @phenotype/quillts."
+  }
+}
