@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Expo/React Native
+.expo/
+node_modules/
+dist/
+
+# CocoaPods
+ios/Pods/
+*.xcworkspace
+*.xcodeproj/xcuserdata/
+
+# IDE
+.vscode/
+.idea/
+
+# Lockfiles should be committed for apps; keep yarn/pnpm
+package-lock.json
