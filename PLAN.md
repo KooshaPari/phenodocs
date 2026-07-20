@@ -7,7 +7,7 @@
 
 | Task | Description | Depends On |
 |------|-------------|------------|
-| P1.1 | VitePress config with keycap theme from @phenotype/design | -- |
+| P1.1 | VitePress config with keycap theme from @phenotype/design | done |
 | P1.2 | Build script to fetch docs from source repos | -- |
 | P1.3 | Auto-generated sidebar from directory structure | P1.2 |
 

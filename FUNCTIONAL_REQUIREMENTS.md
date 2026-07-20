@@ -155,7 +155,7 @@ All components SHALL also be exported as named exports from the theme entry for 
 **Code:** `packages/docs/src/theme/index.ts` (named export section)
 
 ### FR-CMP-004: CSS Import
-The theme entry SHALL import `../css/custom.css` so Phenotype keycap-palette and site-wide styles are applied to all consumers.
+The theme entry SHALL import `../css/custom.css`, which in turn imports `@phenotype/design/css/vitepress-theme.css`, so Phenotype keycap-palette and site-wide styles are applied to all consumers.
 **Traces to:** E2.4
 **Code:** `packages/docs/src/theme/index.ts` (`import '../css/custom.css'`)
 
@@ -169,7 +169,7 @@ The theme entry SHALL import `../css/custom.css` so Phenotype keycap-palette and
 **Code:** `packages/docs/package.json#publishConfig`
 
 ### FR-PKG-002: Export Map Completeness
-`packages/docs/package.json` SHALL define exports for: `./theme`, `./config`, `./utils`, `./types`, `./css/keycap-palette.css`, `./css/custom.css`.
+`packages/docs/package.json` SHALL define exports for: `./theme`, `./config`, `./utils`, `./types`, `./css/custom.css`. Keycap tokens SHALL be consumed from `@phenotype/design/css/keycap-palette.css`.
 **Traces to:** E2.5
 **Code:** `packages/docs/package.json#exports`
 
