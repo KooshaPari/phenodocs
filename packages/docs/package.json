@@ -9,7 +9,6 @@
     "./config": "./src/config/index.ts",
     "./utils": "./src/utils/index.ts",
     "./types": "./src/types/index.ts",
-    "./css/keycap-palette.css": "./src/css/keycap-palette.css",
     "./css/custom.css": "./src/css/custom.css"
   },
   "peerDependencies": {

@@ -75,7 +75,8 @@ Extract the shared layer into a workspace package at `packages/docs` with packag
 
 **Rationale (from actual code):**
 - `packages/docs/package.json` defines `"name": "@phenotype/docs"` and `"private": false`
-- Export map exposes six entry points: `./theme`, `./config`, `./utils`, `./types`, `./css/keycap-palette.css`, `./css/custom.css`
+- Export map exposes five entry points: `./theme`, `./config`, `./utils`, `./types`, `./css/custom.css`
+- Keycap palette and VitePress theme CSS come from `@phenotype/design` (`KooshaPari/phenoDesign`); phenodocs does not fork design tokens
 - `publishConfig.registry: "https://npm.pkg.github.com"` is set
 - `createPhenotypeConfig` in `./config` calls `deepMerge` from `./utils` — intra-package, type-safe
 

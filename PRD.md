@@ -99,7 +99,7 @@ As a documentation author, I can use 21 pre-registered Vue components in any Vit
 **Acceptance Criteria:**
 - Theme entry (`@phenotype/docs/theme`) registers all components globally via `app.component(name, component)` in `enhanceApp`
 - Registered components: `AuditTimeline`, `BackToTop`, `Breadcrumb`, `Callout`, `CategorySwitcher`, `CodeAnnotation`, `CodePlayground`, `ContentTabs`, `DemoGif`, `DocStatusBadge`, `KBGraph`, `LoadingSpinner`, `ModuleSwitcher`, `NavTabs`, `OpenAPI`, `StickyHeader`, `StickySidebar`, `Toast`, `ToastContainer`, `Tooltip`, `CommitLog`
-- Custom CSS (`keycap-palette.css`, `custom.css`) is imported in theme entry
+- Custom CSS (`custom.css`) imports `@phenotype/design/css/vitepress-theme.css`; phenodocs-specific overrides only
 - All components are also exported as named exports for selective import
 
 ### E2.5: Package Publishing
@@ -108,7 +108,7 @@ As a downstream Phenotype project, I can install `@phenotype/docs` from GitHub P
 
 **Acceptance Criteria:**
 - Package name: `@phenotype/docs`; registry: `https://npm.pkg.github.com`; access: `public`
-- Export map in `packages/docs/package.json`: `./theme`, `./config`, `./utils`, `./types`, `./css/keycap-palette.css`, `./css/custom.css`
+- Export map in `packages/docs/package.json`: `./theme`, `./config`, `./utils`, `./types`, `./css/custom.css` (keycap tokens via `@phenotype/design`)
 - Workspace dependency in hub: `"@phenotype/docs": "workspace:*"`
 - CI publishes on release tags
 
