@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
 
       - name: Generate CycloneDX SBOM
-        uses: anchore/sbom-action@5dd6ac9278f372ca3f8480f05a1ed38534773086
+        uses: anchore/sbom-action@4a30bbadbe35d73a1729ee95a9196544192d905e
         with:
           format: cyclonedx-json
           artifact-name: sbom.cdx.json
