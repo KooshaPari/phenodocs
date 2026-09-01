@@ -2,6 +2,8 @@
 
 **Status:** maintenance
 
+[![AI slop inside](https://sladge.net/badge.svg)](https://sladge.net) [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/KooshaPari/phenodocs/total)](https://github.com/KooshaPari/phenodocs/releases)
+
 > VitePress Federation Hub — Aggregate documentation from multiple projects into a unified portal
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
